@@ -1,0 +1,21 @@
+{
+  "name": "dw-ui-storybook",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "nuxt storybook build",
+    "serve": "nuxt storybook",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  },
+  "dependencies": {
+    "@dewib/dw-ui": "link:..",
+    "@nuxtjs/storybook": "latest",
+    "nuxt-edge": "latest"
+  },
+  "devDependencies": {
+    "@storybook/addon-backgrounds": "^6.0.22",
+    "@storybook/addon-controls": "^6.0.21",
+    "@storybook/addon-docs": "^6.0.21",
+    "vue-docgen-api": "^4.33.9"
+  }
+}
