@@ -1,4 +1,4 @@
-import module from '@dewib/dw-ui'
+import module from '..'
 
 export default {
   components: true,
