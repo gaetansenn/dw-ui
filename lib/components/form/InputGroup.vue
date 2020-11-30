@@ -1,5 +1,5 @@
 <template>
-  <div :class="[config.fixed, config.classes]">
+  <div v-if="config" :class="[config.fixed, config.classes]">
     <slot name="label">
       <div :class="config.label.wrapper">
         <label v-if="label" :class="[config.label.fixed, config.label.classes, config.label.size]">
