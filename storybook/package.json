@@ -8,7 +8,7 @@
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "dependencies": {
-    "@dewib/dw-ui": "link:...",
+    "@dewib/dw-ui": "@dewib/dw-ui",
     "nuxt-edge": "latest",
     "@nuxtjs/storybook": "^3.2.0",
     "@nuxtjs/tailwindcss": "^3.0.2"
