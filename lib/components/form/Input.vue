@@ -38,11 +38,6 @@ export default {
     ...SizeProps,
     ...FormProps
   },
-  // computed: {
-  //   inputProps () {
-  //     return syncProps.call(this, Object.keys({ ...InputProps }))
-  //   }
-  // },
   methods: {
     focus () {
       // TODO: Check if can be global
