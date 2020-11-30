@@ -8,9 +8,10 @@
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "dependencies": {
-    "@dewib/dw-ui": "link:..",
-    "@nuxtjs/storybook": "latest",
-    "nuxt-edge": "latest"
+    "@dewib/dw-ui": "link:...",
+    "nuxt-edge": "latest",
+    "@nuxtjs/storybook": "^3.2.0",
+    "@nuxtjs/tailwindcss": "^3.0.2"
   },
   "devDependencies": {
     "@storybook/addon-backgrounds": "^6.0.22",
