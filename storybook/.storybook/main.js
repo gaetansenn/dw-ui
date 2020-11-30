@@ -3,7 +3,7 @@ const { nuxifyStorybook } = require('../.nuxt-storybook/storybook/main.js')
 
 module.exports = nuxifyStorybook({
   webpackFinal (config) {
-    config.resolve.alias['@dewib/dw-ui'] = path.resolve(__dirname, '../../lib')
+    if (process.env.NODE_ENV == 'development') config.resolve.alias['@dewib/dw-ui'] = path.resolve(__dirname, '../../lib')
 
     return config
   },
