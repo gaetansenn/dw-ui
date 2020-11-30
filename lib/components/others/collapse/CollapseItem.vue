@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     isActive () {
-      return this.collapse.activeNames.includes(this.name)
+      return this.collapse && this.collapse.activeNames.includes(this.name)
     }
   },
   methods: {
