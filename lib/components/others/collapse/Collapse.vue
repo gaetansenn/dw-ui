@@ -5,13 +5,10 @@
 </template>
 
 <script>
-import config from '../../config.mixin'
 import CollapseProps from './Collapse.props'
 
 export default {
   name: 'DwCollapse',
-  configPath: 'Input',
-  mixins: [config],
   props: {
     ...CollapseProps
   },
