@@ -35,7 +35,6 @@ export default {
       activeNames = [].concat(activeNames)
       const value = this.accordion ? activeNames[0] : activeNames
 
-      this.activeNames = activeNames
       this.$emit('input', value)
       this.$emit('change', value)
     },
