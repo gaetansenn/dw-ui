@@ -19,11 +19,11 @@
           :active="isActive"
           :title="title"
         >
-          <div :class="config.header.title" class="text-lg font-semibold">
+          <div :class="config.header.title">
             {{ title }}
           </div>
           <!-- eslint-disable-next-line -->
-          <div v-if="!noIcon" :class="{ 'rotate-180': isActive }" class="transition-transform transform duration-500 ease-in-out h-5 w-5 ml-2" v-html="config.header.icon" />
+          <div v-if="!noIcon" :class="[config.header.icon.fixed, config.header.icon.classes]" v-html="config.header.icon.icon" />
         </slot>
       </div>
       <dw-collapse-transition>
