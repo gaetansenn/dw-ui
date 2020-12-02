@@ -37,7 +37,7 @@
               :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }]"
               @click.stop="toggleOption(option, i)"
             >
-              <slot :option="option" name="option">
+              <slot :option="option" :selected="selectedIndex === i" name="option">
                 <span>{{ option[valueKey] }}</span>
               </slot>
             </li>
@@ -169,6 +169,9 @@ export default {
       this.close()
     },
     unselectOption () {
+      // Avoid unselect if required
+      if (this.required) return this.close()
+
       this.index = 0
       // We clean the current selected item
       this.$emit('input', null)
