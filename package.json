@@ -26,11 +26,12 @@
   },
   "homepage": "https://github.com/gaetansenn/dw-ui#readme",
   "dependencies": {
-    "consola": "^2.15.0",
-    "defu": "^3.2.2",
     "@nuxtjs/storybook": "^3.2.0",
     "@nuxtjs/tailwindcss": "^3.0.2",
-    "@tailwindcss/custom-forms": "^0.2.1"
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "consola": "^2.15.0",
+    "defu": "^3.2.2",
+    "vue-global-events": "^1.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

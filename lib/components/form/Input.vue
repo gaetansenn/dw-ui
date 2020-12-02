@@ -16,7 +16,7 @@
 
 // import syncProps from '../utils/syncProps'
 import config from '../config.mixin'
-import CommonsProps from '../Commons.props'
+import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
 import InputProps from './Input.props'
 import FormProps from './Form.props'

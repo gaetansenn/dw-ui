@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CommonsProps from '../Commons.props'
+import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'

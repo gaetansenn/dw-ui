@@ -1,0 +1,56 @@
+<template>
+  <div :class="[config.wrapper]">
+    <component :is="is" v-bind="props" :class="[config.fixed, config.size, config.variant, config.rounded]">
+      <slot />
+    </component>
+  </div>
+</template>
+
+<script>
+import config from '../config.mixin'
+import SizeProps from '../size.props'
+import RoundedProps from '../rounded.props'
+import CommonsProps from '../commons.props'
+import ButtonProps from './Button.props'
+
+export default {
+  configPath: 'Button',
+  mixins: [config],
+  props: {
+    ...SizeProps,
+    ...RoundedProps,
+    ...CommonsProps,
+    ...ButtonProps
+  },
+  computed: {
+    is () {
+      if (this.href)
+        return 'a'
+      else if (this.to)
+        return 'nuxt-link'
+
+      return 'button'
+    },
+    props () {
+      switch (this.is) {
+        case 'a':
+          return {
+            href: this.href,
+            target: this.target
+          }
+        case 'nuxt-link': {
+          return {
+            to: this.to
+          }
+        }
+        default: {
+          return {
+            disabled: this.disabled || this.loading,
+            type: this.type
+          }
+        }
+      }
+    }
+  }
+}
+</script>

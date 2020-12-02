@@ -22,7 +22,7 @@
 
 <script>
 import config from '../config.mixin'
-import CommonsProps from '../Commons.props'
+import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'

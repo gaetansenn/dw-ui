@@ -1,7 +1,7 @@
 <template>
   <DwInputGroup v-bind="inputGroupProps">
-    <select v-model="localeValue" :class="[config.fixed, config.variant]">
-      <option value="">
+    <select v-model="localeValue" :class="[config.fixed, config.variant, config.size]">
+      <option v-if="placeholder !== false" value="">
         {{ placeholder || config.placeholder }}
       </option>
       <option v-for="(option, index) in localeOptions" :key="index" :value="option[valueKey]">
@@ -13,7 +13,7 @@
 
 <script>
 import config from '../config.mixin'
-import CommonsProps from '../Commons.props'
+import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'
