@@ -26,7 +26,7 @@
         <ul
           v-if="opened"
           ref="options"
-          class="absolute z-50 bg-white shadow mt-1 rounded text-sm w-full overflow-y-auto"
+          :class="[config.options]"
           style="max-height: 15rem;"
         >
           <template>
