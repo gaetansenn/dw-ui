@@ -163,9 +163,9 @@ export default {
     selectOption (item, index) {
       this.index = index
       // Update v-model
-      this.$emit('input', item)
+      this.$emit('input', item[this.valueKey])
       // Send event of v-model change
-      this.$emit('change', item)
+      this.$emit('change', item[this.valueKey])
       this.close()
     },
     unselectOption () {
