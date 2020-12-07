@@ -8,6 +8,7 @@ module.exports = {
     '@nuxtjs'
   ],
   rules: {
-    curly: [2, 'multi']
+    curly: [2, 'multi'],
+    'vue/no-v-html': 0
   }
 }

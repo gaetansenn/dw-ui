@@ -22,7 +22,6 @@
           <div :class="config.header.title">
             {{ title }}
           </div>
-          <!-- eslint-disable-next-line -->
           <div v-if="!noIcon" :class="[config.header.icon.fixed, config.header.icon.classes]" v-html="config.header.icon.icon" />
         </slot>
       </div>
