@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/gaetansenn/dw-ui#readme",
   "dependencies": {
-    "@nuxtjs/storybook": "^3.2.0",
+    "@nuxtjs/storybook": "^3.3.0",
     "@nuxtjs/tailwindcss": "^3.0.2",
     "@tailwindcss/custom-forms": "^0.2.1",
     "consola": "^2.15.0",

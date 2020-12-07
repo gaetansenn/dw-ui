@@ -1,5 +1,5 @@
 <template>
-  <DwInputGroup v-if="config" v-bind="inputGroupProps">
+  <DwInputGroup v-bind="inputGroupProps">
     <div
       v-click-away="{
         exclude: [],

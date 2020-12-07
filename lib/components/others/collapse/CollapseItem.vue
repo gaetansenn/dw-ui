@@ -1,5 +1,5 @@
 <template>
-  <div v-if="config" :class="{ 'is-active': isActive, 'is-disabled': disabled }">
+  <div :class="{ 'is-active': isActive, 'is-disabled': disabled }">
     <div
       :aria-expanded="isActive"
       role="tab"

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="config" class="inline-flex flex-wrap text-sm">
+  <div class="inline-flex flex-wrap text-sm">
     <div v-for="(item, index) in newItems" :key="index" :class="index === newItems.length - 1 ? config.item.active : config.item.class">
       <div v-if="item.separator" :class="config.item.separator">
         <div v-html="config.separator" />
