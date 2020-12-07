@@ -5,6 +5,7 @@
       ref="component"
       :class="[config.fixed, config.variant, config.size, config.validation]"
       :type="type"
+      v-bind="bind"
       @input="$emit('input', $event.target.value)"
       @click="$emit('click')"
     >
@@ -18,6 +19,7 @@
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
+import bindProps from '../utils/bindProps'
 import InputProps from './Input.props'
 import FormProps from './Form.props'
 
@@ -37,6 +39,9 @@ export default {
     ...CommonsProps,
     ...SizeProps,
     ...FormProps
+  },
+  created () {
+    this.bind = bindProps.call(this, InputProps)
   },
   methods: {
     focus () {
