@@ -9,6 +9,8 @@
 <script>
 import config from '../config.mixin'
 import SizeProps from '../size.props'
+import HrefProps from '../href.props'
+import ToProps from '../to.props'
 import RoundedProps from '../rounded.props'
 import CommonsProps from '../commons.props'
 import ButtonProps from './Button.props'
@@ -20,7 +22,9 @@ export default {
     ...SizeProps,
     ...RoundedProps,
     ...CommonsProps,
-    ...ButtonProps
+    ...ButtonProps,
+    ...HrefProps,
+    ...ToProps
   },
   computed: {
     is () {
