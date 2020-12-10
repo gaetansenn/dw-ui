@@ -37,7 +37,7 @@ export function validate () {
 
 export function validateConfirm () {
   // Inject password compare if present
-  if (this.value && this.same !== this.value) {
+  if (this.same && this.value && this.same !== this.value) {
     this.localeValidation = {
       type: 'error',
       // TODO: Handle i18n if provided
@@ -76,7 +76,8 @@ export default {
     inputProps () {
       const inputProps = {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localeValidation,
+        configPath: 'InputPassword'
       }
 
       // Inject show password icon

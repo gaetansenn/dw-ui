@@ -30,14 +30,15 @@ export default {
   computed: {
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...InputProps, ...SizeProps })),
+        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, name: InputProps.name, ...SizeProps })),
         validation: this.localeValidation
       }
     },
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localeValidation,
+        configPath: 'InputText'
       }
     }
   }

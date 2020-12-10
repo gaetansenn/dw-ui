@@ -56,7 +56,8 @@ export default {
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localeValidation,
+        configPath: 'InputEmail'
       }
     }
   },

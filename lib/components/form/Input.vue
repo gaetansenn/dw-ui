@@ -3,25 +3,25 @@
     <!-- TODO: Inject leading config -->
     <input
       ref="component"
-      :class="[config.fixed, config.variant, config.size, config.validation, config.icon]"
+      :class="[config.Input.fixed, config.Input.variant, config.Input.size, config.Input.validation, config.Input.icon]"
       :type="type"
       v-bind="bind"
       @input="$emit('input', $event.target.value)"
+      @change="$emit('change', value)"
       @click="$emit('click')"
     >
     <div
       v-if="isTrailing"
-      :class="config.trailing"
+      :class="config.Input.trailing"
       @click="$emit('trailing-click')"
     >
-      <div :class="[iconClasses, icon.classes, icon.size]" v-html="icon" />
+      <div :class="[iconClasses, config.Input.icon.classes, config.Input.icon.size]" v-html="icon" />
     </div>
   </div>
 </template>
 
 <script>
 
-// import syncProps from '../utils/syncProps'
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
@@ -30,7 +30,6 @@ import InputProps from './Input.props'
 import FormProps from './Form.props'
 
 export default {
-  configPath: 'Input',
   mixins: [config],
   props: {
     value: {
@@ -38,6 +37,10 @@ export default {
       default: ''
     },
     type: {
+      type: String,
+      required: true
+    },
+    configPath: {
       type: String,
       required: true
     },
