@@ -3,13 +3,19 @@
     <!-- TODO: Inject leading config -->
     <input
       ref="component"
-      :class="[config.fixed, config.variant, config.size, config.validation]"
+      :class="[config.fixed, config.variant, config.size, config.validation, config.icon]"
       :type="type"
       v-bind="bind"
       @input="$emit('input', $event.target.value)"
       @click="$emit('click')"
     >
-    <!-- TODO: Inject trailing config -->
+    <div
+      v-if="isTrailing"
+      :class="config.trailing"
+      @click="$emit('trailing-click')"
+    >
+      <div :class="[iconClasses, icon.classes, icon.size]" v-html="icon" />
+    </div>
   </div>
 </template>
 
@@ -39,6 +45,14 @@ export default {
     ...CommonsProps,
     ...SizeProps,
     ...FormProps
+  },
+  computed: {
+    isLeading () {
+      return this.icon && this.leading
+    },
+    isTrailing () {
+      return this.icon && this.trailing
+    }
   },
   created () {
     this.bind = bindProps.call(this, InputProps)
