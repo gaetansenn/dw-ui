@@ -5,9 +5,13 @@ import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import InputGroupProps from './InputGroup.props'
 import InputGroupRadioProps from './InputGroupRadio.props'
+import DwInputGroup from './InputGroup'
 
 export default {
   configPath: 'InputGroupRadio',
+  components: {
+    DwInputGroup
+  },
   mixins: [config],
   props: {
     ...SizeProps,
@@ -34,7 +38,7 @@ export default {
   render (h) {
     // Inject name to children
     this.$slots.default.forEach((node) => {
-      node.componentOptions.propsData.name = this.name
+      if (node.componentOptions) node.componentOptions.propsData.name = this.name
     })
 
     return h('DwInputGroup', {
