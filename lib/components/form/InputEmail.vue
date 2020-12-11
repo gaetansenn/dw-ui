@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import confirmMixin from '../confirm.mixin'
