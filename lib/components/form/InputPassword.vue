@@ -10,6 +10,7 @@ import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'
+import confirmMixin from '../confirm.mixin'
 import InputPasswordProps from './InputPassword.props'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
@@ -35,24 +36,9 @@ export function validate () {
   return true
 }
 
-export function validateConfirm () {
-  // Inject password compare if present
-  if (this.same && this.value && this.same !== this.value) {
-    this.localeValidation = {
-      type: 'error',
-      // TODO: Handle i18n if provided
-      description: 'The password confirmation is not the same'
-    }
-
-    return false
-  }
-
-  return true
-}
-
 export default {
   configPath: 'InputPassword',
-  mixins: [config, InputMixin, localeProp('validation')],
+  mixins: [config, InputMixin, localeProp('validation'), confirmMixin],
   props: {
     ...InputPasswordProps,
     ...SizeProps,
@@ -103,7 +89,7 @@ export default {
 
       if (!passwordValidate) return false
 
-      return validateConfirm.call(this)
+      return this.validateConfirm('The password confirmation is not the same')
     }
   }
 }

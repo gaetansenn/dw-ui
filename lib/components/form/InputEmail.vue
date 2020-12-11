@@ -5,8 +5,10 @@
 </template>
 
 <script>
+import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
+import confirmMixin from '../confirm.mixin'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'
 import InputProps from './Input.props'
@@ -34,7 +36,7 @@ export function validate () {
 }
 
 export default {
-  mixins: [InputMixin, localeProp('validation')],
+  mixins: [InputMixin, localeProp('validation'), confirmMixin],
   props: {
     value: {
       type: String,
@@ -69,7 +71,9 @@ export default {
       // Case not required and empty (avoid continue checking)
       if (STOP_ON_EMPTY.call(this)) return true
 
-      return validate.call(this)
+      if (!validate.call(this)) return false
+
+      return this.validateConfirm('The email confirmation is not the same')
     }
   }
 }
