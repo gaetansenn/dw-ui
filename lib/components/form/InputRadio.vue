@@ -31,6 +31,7 @@ export default {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
         validation: this.localeValidation,
+        checked: this.selected === this.value,
         configPath: 'InputRadio'
       }
     }

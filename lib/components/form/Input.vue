@@ -4,6 +4,7 @@
     <input
       ref="component"
       :class="[config.Input.fixed, config.Input.variant, config.Input.size, config.Input.validation, config.Input.icon]"
+      :value="value"
       :type="type"
       v-bind="bind"
       @input="$emit('input', $event.target.value)"
