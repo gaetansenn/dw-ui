@@ -6,11 +6,11 @@ import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import InputMixin from './Input.mixin'
 import InputGroupProps from './InputGroup.props'
-import InputGroupRadioProps from './InputGroupRadio.props'
+import InputGroupCheckboxProps from './InputGroupCheckbox.props'
 import DwInputGroup from './InputGroup'
 
 export default {
-  configPath: 'InputGroupRadio',
+  configPath: 'InputGroupCheckbox',
   components: {
     DwInputGroup
   },
@@ -19,12 +19,12 @@ export default {
     ...SizeProps,
     ...CommonsProps,
     ...InputGroupProps,
-    ...InputGroupRadioProps
+    ...InputGroupCheckboxProps
   },
   computed: {
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...CommonsProps, ...SizeProps, ...InputGroupRadioProps, ...InputGroupProps })),
+        ...syncProps.call(this, Object.keys({ ...CommonsProps, ...SizeProps, ...InputGroupCheckboxProps, ...InputGroupProps })),
         validation: this.localeValidation
       }
     }
@@ -35,11 +35,20 @@ export default {
       if (node.componentOptions) {
         node.data.on = {
           input: (value) => {
-            this.$emit('input', node.componentInstance.value)
+            if (!Array.isArray(this.value)) {
+              if (this.value !== node.componentInstance.value) this.value = this.value ? [this.value, node.componentInstance.value] : [node.componentInstance.value]
+              else this.value = null
+
+              this.$emit('input', this.value)
+            } else
+            if (this.value.includes(node.componentInstance.value)) this.value = this.value.filter(c => c !== node.componentInstance.value)
+            else this.value = this.value.concat(node.componentInstance.value)
+
+            this.$emit('input', this.value)
           }
         }
         node.componentOptions.propsData.name = this.name
-        node.componentOptions.propsData.selected = this.value
+        if (this.value && node.componentInstance) node.componentOptions.propsData.selected = this.value.includes(node.componentInstance.value)
       }
     })
 

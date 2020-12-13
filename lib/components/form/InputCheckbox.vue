@@ -1,6 +1,6 @@
 <template>
   <label :class="config.fixed">
-    <DwInput :value="value" v-bind="inputProps" type="radio" @change="(value) => $emit('input', value)" />
+    <DwInput :value="value" v-bind="inputProps" type="checkbox" @change="onChange" />
     <span v-if="label" :class="[config.label, config.label.size]">{{ label }}</span>
   </label>
 </template>
@@ -10,30 +10,43 @@ import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
-import InputRadio from './InputRadio.props'
+import InputCheckbox from './InputRadio.props'
 import InputProps from './Input.props'
 
 export default {
-  configPath: 'InputRadio',
+  configPath: 'InputCheckbox',
   mixins: [config],
   model: {
     prop: 'selected',
     event: 'input'
   },
   props: {
-    ...InputRadio,
+    ...InputCheckbox,
     ...SizeProps,
     ...CommonsProps,
     ...InputProps
   },
+  data () {
+    return {
+      isChecked: false
+    }
+  },
   computed: {
+    // isChecked () {
+    //   return Array.isArray(this.selected) ? this.selected.includes(this.value) : this.selected === this.value
+    // },
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
         validation: this.localeValidation,
-        checked: JSON.stringify(this.selected) === JSON.stringify(this.value),
-        configPath: 'InputRadio'
+        configPath: 'InputCheckbox'
       }
+    }
+  },
+  methods: {
+    onChange () {
+      this.isChecked = !this.isChecked
+      this.$emit('input', this.isChecked)
     }
   }
 }
