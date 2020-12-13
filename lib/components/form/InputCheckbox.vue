@@ -1,7 +1,7 @@
 <template>
   <label :class="config.fixed">
     <DwInput :value="value" v-bind="inputProps" type="checkbox" @change="onChange" />
-    <span v-if="label" :class="[config.label, config.label.size]">{{ label }}</span>
+    <span v-if="label" :class="[config.label.fixed, config.label.size]">{{ label }}</span>
   </label>
 </template>
 
