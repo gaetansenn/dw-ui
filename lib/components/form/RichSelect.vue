@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import i18n from '../utils/i18n'
 import ClickAway from '../directives/click-away'
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
@@ -67,7 +68,7 @@ export default {
   directives: {
     'click-away': ClickAway
   },
-  mixins: [config, InputMixin, localeProp('validation'), localeProp('value')],
+  mixins: [i18n, config, InputMixin, localeProp('validation'), localeProp('value')],
   props: {
     ...SelectProps,
     ...SizeProps,

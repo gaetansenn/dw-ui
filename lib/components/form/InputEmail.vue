@@ -10,6 +10,7 @@ import syncProps from '../utils/syncProps'
 import confirmMixin from '../confirm.mixin'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'
+import i18n from '../utils/i18n'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
 import InputMixin, { DEFAULT_VALIDATION, STOP_ON_EMPTY } from './Input.mixin'
@@ -24,8 +25,7 @@ export function validate () {
   if (!test) {
     this.localeValidation = {
       type: 'error',
-      // TODO: Handle i18n if provided
-      description: 'Please provide a valid email address'
+      description: this.translate('InputEmail.valid')
     }
 
     return false
@@ -35,7 +35,7 @@ export function validate () {
 }
 
 export default {
-  mixins: [InputMixin, localeProp('validation'), confirmMixin],
+  mixins: [i18n, InputMixin, localeProp('validation'), confirmMixin],
   props: {
     value: {
       type: String,
@@ -72,7 +72,7 @@ export default {
 
       if (!validate.call(this)) return false
 
-      return this.validateConfirm('The email confirmation is not the same')
+      return this.validateConfirm(this.translate('InputEmail.confirm'))
     }
   }
 }

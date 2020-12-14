@@ -1,4 +1,5 @@
 <script>
+import i18n from '../utils/i18n'
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import localeProp from '../utils/localeProp'
@@ -14,7 +15,7 @@ export default {
   components: {
     DwInputGroup
   },
-  mixins: [config, InputMixin, localeProp('validation')],
+  mixins: [i18n, config, InputMixin, localeProp('validation')],
   props: {
     ...SizeProps,
     ...CommonsProps,

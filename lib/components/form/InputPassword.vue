@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import i18n from '../utils/i18n'
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
@@ -26,8 +27,7 @@ export function validate () {
   if (!test) {
     this.localeValidation = {
       type: 'error',
-      // TODO: Handle i18n if provided
-      description: 'Please provide a valid password'
+      description: this.translate('InputPassword.valid')
     }
 
     return false
@@ -38,7 +38,7 @@ export function validate () {
 
 export default {
   configPath: 'InputPassword',
-  mixins: [config, InputMixin, localeProp('validation'), confirmMixin],
+  mixins: [i18n, config, InputMixin, localeProp('validation'), confirmMixin],
   props: {
     ...InputPasswordProps,
     ...SizeProps,
@@ -89,7 +89,7 @@ export default {
 
       if (!passwordValidate) return false
 
-      return this.validateConfirm('The password confirmation is not the same')
+      return this.validateConfirm('InputPassword.confirm')
     }
   }
 }

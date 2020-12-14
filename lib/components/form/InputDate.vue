@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import i18n from '../utils/i18n'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
@@ -23,8 +24,7 @@ export function validate () {
   if (!test) {
     this.localeValidation = {
       type: 'error',
-      // TODO: Handle i18n if provided
-      description: 'Please provide a valid date'
+      description: this.translate('InputDate.valid')
     }
 
     return false
@@ -34,7 +34,7 @@ export function validate () {
 }
 
 export default {
-  mixins: [InputMixin, localeProp('validation')],
+  mixins: [i18n, InputMixin, localeProp('validation')],
   props: {
     value: {
       type: String,
