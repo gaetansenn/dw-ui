@@ -1,3 +1,4 @@
+<script type="module">
 import { addClass, removeClass } from '../utils/dom'
 
 import config from '../config.mixin'
@@ -82,3 +83,4 @@ export default {
     return h('transition', data, this.$slots.default)
   }
 }
+</script>

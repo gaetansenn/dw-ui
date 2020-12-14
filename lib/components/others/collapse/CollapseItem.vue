@@ -25,7 +25,7 @@
           <div v-if="!noIcon" :class="[config.header.icon.fixed, config.header.icon.classes]" v-html="config.header.icon.icon" />
         </slot>
       </div>
-      <dw-collapse-transition>
+      <DwCollapseTransition>
         <div
           v-show="isActive"
           :id="`dw-collapse-content-${id}`"
@@ -37,7 +37,7 @@
             <slot :active="isActive" />
           </div>
         </div>
-      </dw-collapse-transition>
+      </DwCollapseTransition>
     </div>
   </div>
 </template>
