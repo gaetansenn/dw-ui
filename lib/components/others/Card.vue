@@ -2,10 +2,14 @@
 import config from '../config.mixin'
 import HrefProps from '../href.props'
 import ToProps from '../to.props'
+import DwCollapseTransition from '../transitions/collapse-transition'
 import CardProps from './Card.props'
 
 export default {
   configPath: 'Card',
+  components: {
+    DwCollapseTransition
+  },
   mixins: [config],
   props: {
     ...CardProps,
@@ -14,7 +18,7 @@ export default {
   },
   data () {
     return {
-      opened: false
+      opened: this.collapsed
     }
   },
   computed: {
@@ -77,14 +81,17 @@ export default {
         domProps: { innerHTML: this.config.header.icon.icon }
       }))
 
-      childrens.push(h('div', {
-        class: [this.config.header.fixed, this.config.header.classes],
-        on: {
-          click: () => {
-            this.opened = !this.opened
-          }
+      const header = {
+        class: [this.config.header.fixed, this.config.header.classes]
+      }
+
+      if (this.collapse) header.on = {
+        click: () => {
+          this.opened = !this.opened
         }
-      }, headerChildrens))
+      }
+
+      childrens.push(h('div', header, headerChildrens))
     }
 
     if (this.collapse)
