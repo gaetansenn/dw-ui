@@ -7,6 +7,13 @@
 /* eslint-disable quote-props */
 
 module.exports = {
+  theme: {
+    extend: {
+      spacing: {
+        full: '100%'
+      }
+    }
+  },
   variants: {
     opacity: ['responsive', 'hover', 'focus', 'disabled'],
     cursor: ['responsive', 'disabled']

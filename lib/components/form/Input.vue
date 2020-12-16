@@ -1,36 +1,17 @@
-<template>
-  <div class="relative">
-    <!-- TODO: Inject leading config -->
-    <input
-      ref="component"
-      :class="[config.Input.fixed, config.Input.variant, config.Input.size, config.Input.validation, config.Input.icon]"
-      :value="value"
-      :type="type"
-      v-bind="bind"
-      @input="$emit('input', $event.target.value)"
-      @change="$emit('change', value)"
-      @click="$emit('click')"
-    >
-    <div
-      v-if="isTrailing"
-      :class="config.Input.trailing"
-      @click="$emit('trailing-click')"
-    >
-      <div :class="[iconClasses, config.Input.icon.classes, config.Input.icon.size]" v-html="icon" />
-    </div>
-  </div>
-</template>
 
 <script>
-
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
 import bindProps from '../utils/bindProps'
+import InnerToVue from '../utils/InnerToVue'
 import InputProps from './Input.props'
 import FormProps from './Form.props'
 
 export default {
+  components: {
+    InnerToVue
+  },
   mixins: [config],
   props: {
     value: {
@@ -71,6 +52,49 @@ export default {
 
       this.$emit('focus')
     }
+  },
+  render (h) {
+    const childrens = [h('input', {
+      ref: 'component',
+      class: [this.config.Input.fixed, this.config.Input.variant, this.config.Input.size, this.config.Input.validation],
+      attrs: {
+        type: this.type,
+        ...this.bind
+      },
+      domProps: {
+        value: this.value
+      },
+      on: {
+        input: ($event) => {
+          this.$emit('input', $event.target.value)
+        },
+        change: () => {
+          this.$emit('change', this.value)
+        },
+        click: () => {
+          this.$emit('click')
+        }
+      }
+    })]
+
+    if (this.isTrailing)
+      childrens.push(h('div', {
+        class: [this.config.Input.trailing.fixed, this.config.Input.trailing.classes],
+        on: {
+          click: () => {
+            this.$emit('trailing-click')
+          }
+        }
+      }, [h('InnerToVue', {
+        class: [this.config.Input.icon.fixed, this.config.Input.icon.size],
+        props: {
+          template: this.icon
+        }
+      })]))
+
+    return h('div', {
+      class: 'relative'
+    }, childrens)
   }
 }
 </script>
