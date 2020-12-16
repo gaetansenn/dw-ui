@@ -7,6 +7,10 @@
 /* eslint-disable quote-props */
 
 module.exports = {
+  variants: {
+    opacity: ['responsive', 'hover', 'focus', 'disabled'],
+    cursor: ['responsive', 'disabled']
+  },
   plugins: [
     require('@tailwindcss/custom-forms')
   ]
