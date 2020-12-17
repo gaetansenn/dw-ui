@@ -4,14 +4,10 @@ import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
 import bindProps from '../utils/bindProps'
-import InnerToVue from '../utils/InnerToVue'
 import InputProps from './Input.props'
 import FormProps from './Form.props'
 
 export default {
-  components: {
-    InnerToVue
-  },
   mixins: [config],
   props: {
     value: {
@@ -85,10 +81,10 @@ export default {
             this.$emit('trailing-click')
           }
         }
-      }, [h('InnerToVue', {
+      }, [h('div', {
         class: [this.config.Input.icon.fixed, this.config.Input.icon.size],
-        props: {
-          template: this.icon
+        domProps: {
+          innerHTML: this.icon
         }
       })]))
 

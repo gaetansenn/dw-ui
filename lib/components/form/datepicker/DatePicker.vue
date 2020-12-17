@@ -9,10 +9,10 @@
       </div>
       <div :class="config.header.navigation.fixed">
         <button :class="config.header.navigation.button" @click.stop="prevMonth">
-          <DwInnerToVue :template="config.header.navigation.icon.left" :class="config.header.navigation.icon.fixed" />
+          <div :class="config.header.navigation.icon.fixed" v-html="config.header.navigation.icon.left" />
         </button>
         <button :class="config.header.navigation.button" @click.stop="nextMonth">
-          <DwInnerToVue :template="config.header.navigation.icon.right" :class="config.header.navigation.icon.fixed" />
+          <div :class="config.header.navigation.icon.fixed" v-html="config.header.navigation.icon.right" />
         </button>
       </div>
     </div>

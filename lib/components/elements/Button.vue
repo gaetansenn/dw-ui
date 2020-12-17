@@ -1,9 +1,8 @@
 <template>
-  <div :class="[config.wrapper]">
-    <component :is="is" v-bind="props" :class="[config.fixed, config.size, config.variant, config.rounded]">
-      <slot />
-    </component>
-  </div>
+  <component :is="is" v-bind="props" :class="[config.fixed, config.classes, config.size, config.variant, config.rounded]">
+    <slot />
+    <div v-if="loading" :class="[config.loading.fixed, config.loading.size]" v-html="config.loading.icon" />
+  </component>
 </template>
 
 <script>
