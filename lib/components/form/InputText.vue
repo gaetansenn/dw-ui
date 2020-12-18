@@ -31,7 +31,7 @@ export default {
   computed: {
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, name: InputProps.name, ...SizeProps })),
+        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
         validation: this.localeValidation
       }
     },

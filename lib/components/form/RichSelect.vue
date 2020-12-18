@@ -122,7 +122,7 @@ export default {
     },
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...InputProps, ...SizeProps })),
+        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
         validation: this.localeValidation
       }
     }
