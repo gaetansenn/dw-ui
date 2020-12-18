@@ -36,20 +36,19 @@ export default {
       if (node.componentOptions) {
         node.data.on = {
           input: (value) => {
-            if (!Array.isArray(this.value)) {
-              if (this.value !== node.componentInstance.value) this.value = this.value ? [this.value, node.componentInstance.value] : [node.componentInstance.value]
-              else this.value = null
-
-              this.$emit('input', this.value)
-            } else
-            if (this.value.includes(node.componentInstance.value)) this.value = this.value.filter(c => c !== node.componentInstance.value)
-            else this.value = this.value.concat(node.componentInstance.value)
-
-            this.$emit('input', this.value)
+            if (!Array.isArray(this.value))
+              if (this.value !== node.componentInstance.value) this.$emit('input', this.value ? [this.value, node.componentInstance.value] : [node.componentInstance.value])
+              else this.$emit('input', null)
+            else
+            if (this.value.includes(node.componentInstance.value)) this.$emit('input', this.value.filter(c => c !== node.componentInstance.value))
+            else this.$emit('input', this.value.concat(node.componentInstance.value))
           }
         }
         node.componentOptions.propsData.name = this.name
-        if (this.value && node.componentInstance) node.componentOptions.propsData.selected = this.value.includes(node.componentInstance.value)
+        if (this.value && node.componentOptions)
+          if (Array.isArray(this.value)) node.componentOptions.propsData.selected = this.value.includes(node.componentOptions.propsData.value)
+          else
+            node.componentOptions.propsData.selected = this.value === (node.componentOptions.propsData.value || node.componentOptions.Ctor.options.props.value.default)
       }
     })
 
