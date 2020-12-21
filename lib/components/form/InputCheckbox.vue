@@ -28,12 +28,10 @@ export default {
     ...CommonsProps,
     ...InputProps
   },
-  data () {
-    return {
-      isChecked: this.selected
-    }
-  },
   computed: {
+    isChecked () {
+      return Array.isArray(this.selected) ? this.selected.includes(this.value) : this.selected
+    },
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
@@ -48,8 +46,10 @@ export default {
       return DEFAULT_VALIDATION.call(this, 'selected')
     },
     onChange () {
-      this.isChecked = !this.isChecked
-      this.$emit('input', this.isChecked ? this.value : null)
+      if (Array.isArray(this.selected))
+        if (this.isChecked) this.$emit('input', this.selected.filter(item => item !== this.value))
+        else this.$emit('input', [...this.selected, this.value])
+      else this.$emit('input', this.isChecked ? null : this.value)
     }
   }
 }
