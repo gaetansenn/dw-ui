@@ -58,7 +58,8 @@ export default {
         ...this.bind
       },
       domProps: {
-        value: this.value
+        value: this.value,
+        checked: this.checked
       },
       on: {
         input: ($event) => {
