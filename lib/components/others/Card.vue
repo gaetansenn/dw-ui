@@ -2,13 +2,13 @@
 import config from '../config.mixin'
 import HrefProps from '../href.props'
 import ToProps from '../to.props'
-import DwCollapseTransition from '../transitions/collapse-transition'
+import CollapseTransition from '../transitions/CollapseTransition'
 import CardProps from './Card.props'
 
 export default {
   configPath: 'Card',
   components: {
-    DwCollapseTransition
+    CollapseTransition
   },
   mixins: [config],
   props: {
@@ -95,7 +95,7 @@ export default {
     }
 
     if (this.collapse)
-      childrens.push(h('DwCollapseTransition', [h('div', {
+      childrens.push(h('CollapseTransition', [h('div', {
         directives: [{
           name: 'show',
           rawName: 'v-show',
