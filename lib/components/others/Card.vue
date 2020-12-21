@@ -48,7 +48,7 @@ export default {
         }
         case 'form': {
           return {
-            domProps: {
+            attrs: {
               novalidate: true
             },
             on: {
