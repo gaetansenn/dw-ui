@@ -38,7 +38,7 @@
               @click.stop="toggleOption(option, i)"
             >
               <slot :option="option" :selected="selectedIndex === i" name="option">
-                <span>{{ option[valueKey] }}</span>
+                <span>{{ option[labelKey] }}</span>
               </slot>
             </li>
           </template>
