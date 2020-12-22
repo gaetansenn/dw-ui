@@ -40,7 +40,7 @@ import config from '../config.mixin'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
 import InputDatePickerProps from './InputDatepicker.props'
-import DatePickerProps from './datepicker/DatePicker.props'
+import DatePickerProps from './DatePicker/DatePicker.props'
 import InputMixin, { DEFAULT_VALIDATION, STOP_ON_EMPTY } from './Input.mixin'
 import FormProps from './Form.props'
 
