@@ -9,7 +9,15 @@
     >
       <div>
         <button ref="button" :disabled="disabled" :class="[config.button.fixed, config.button.classes, config.button.size]" @click="toggle">
-          <slot name="singleLabel">
+          <slot v-if="loading" name="loading">
+            <div class="flex items-center">
+              <div :class="config.loading.fixed" v-html="config.loading.icon" />
+              <div class="text-sm ml-2">
+                {{ localeLoadingLabel }}
+              </div>
+            </div>
+          </slot>
+          <slot v-else name="singleLabel">
             <span>{{ localePlaceholder }}</span>
           </slot>
         </button>
@@ -62,6 +70,7 @@ import InputGroupProps from './InputGroup.props'
 import InputMixin from './Input.mixin'
 import FormProps from './Form.props'
 import SelectProps from './Select.props'
+import RichSelectProps from './RichSelect.props'
 
 export default {
   configPath: 'RichSelect',
@@ -70,6 +79,7 @@ export default {
   },
   mixins: [i18n, config, InputMixin, localeProp('validation'), localeProp('value')],
   props: {
+    ...RichSelectProps,
     ...SelectProps,
     ...SizeProps,
     ...CommonsProps,
@@ -85,6 +95,10 @@ export default {
     }
   },
   computed: {
+    /** Label to display during loading */
+    localeLoadingLabel () {
+      return this.loadingLabel || this.translate('RichSelect.loading')
+    },
     /** Current option as Object */
     localeOption () {
       const _default = { [this.valueKey]: this.value || '', [this.labelKey]: this.value || '' }
