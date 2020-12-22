@@ -3,6 +3,9 @@ import module from '..'
 export default {
   components: true,
   buildModules: [module, '@nuxtjs/tailwindcss'],
+  env: {
+    storybook: true
+  },
   modules: [
     'nuxt-i18n'
   ],
