@@ -2,6 +2,14 @@
 export default {
   functional: true,
   props: {
+    tag: {
+      type: String,
+      default: 'span'
+    },
+    type: {
+      type: String,
+      default: 'transition'
+    },
     appear: {
       type: Boolean,
       default: false
@@ -16,7 +24,7 @@ export default {
     }
   },
   render (h, context) {
-    return h('transition', {
+    const data = {
       props: {
         appear: context.props.appear,
         mode: context.props.mode,
@@ -27,7 +35,12 @@ export default {
         'leave-class': context.props.config.leave.from,
         'leave-to-class': context.props.config.leave.to
       }
-    }, context.children)
+    }
+
+    if (context.data.class) data.class = context.data.class
+    if (context.props.type === 'transition-group') data.props.tag = context.props.tag
+
+    return h(context.props.type, data, context.children)
   }
 }
 </script>
