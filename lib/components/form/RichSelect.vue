@@ -105,14 +105,13 @@ export default {
 
       if (!this.value) return _default
 
-      if (typeof this.value === 'string')
-        return this.localeOptions.find((option) => {
-          if (typeof option === 'string') return option === this.value
+      if (typeof this.value === 'object') return this.value
 
-          return option[this.valueKey] === this.value
-        })
+      return this.localeOptions.find((option) => {
+        if (typeof option === 'object') return option[this.valueKey] === this.value
 
-      return this.value
+        return option === this.value
+      })
     },
     /**
      * Used to display the current selected item or default placeholder
@@ -122,8 +121,8 @@ export default {
     },
     localeOptions () {
       return this.options.map((item) => {
-        if (typeof item === 'string') return { [this.valueKey]: item, [this.labelKey]: item }
-        return item
+        if (typeof item === 'object') return item
+        return { [this.valueKey]: item, [this.labelKey]: item }
       })
     },
     /**
