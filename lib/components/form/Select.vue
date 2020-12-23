@@ -1,7 +1,8 @@
 <template>
   <DwInputGroup v-bind="inputGroupProps">
+    {{ value }}
     <select v-model="localeValue" :class="[config.fixed, config.variant, config.size]">
-      <option v-if="placeholder !== false" value="">
+      <option v-if="placeholder !== false" :value="emptyLocaleValue">
         {{ placeholder || config.placeholder }}
       </option>
       <option v-for="(option, index) in localeOptions" :key="index" :value="option[valueKey]">
@@ -36,9 +37,13 @@ export default {
     ...FormProps
   },
   computed: {
+    emptyLocaleValue () {
+      if (!this.localeOptions.find(item => item[this.valueKey] === this.localeValue)) return this.localeValue
+      return ''
+    },
     localeOptions () {
       return this.options.map((item) => {
-        if (typeof item === 'string') return { [this.valueKey]: item, [this.labelKey]: item }
+        if (typeof item === 'string' || typeof item === 'number') return { [this.valueKey]: item, [this.labelKey]: item }
         return item
       })
     },
