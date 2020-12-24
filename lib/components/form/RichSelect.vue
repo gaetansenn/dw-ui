@@ -17,7 +17,7 @@
               </div>
             </div>
           </slot>
-          <slot v-else name="singleLabel">
+          <slot v-else name="label" :value="localePlaceholder">
             <span>{{ localePlaceholder }}</span>
           </slot>
         </button>
