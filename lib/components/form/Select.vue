@@ -1,6 +1,5 @@
 <template>
   <DwInputGroup v-bind="inputGroupProps">
-    {{ value }}
     <select v-model="localeValue" :class="[config.fixed, config.variant, config.size]">
       <option v-if="placeholder !== false" :value="emptyLocaleValue">
         {{ placeholder || config.placeholder }}
