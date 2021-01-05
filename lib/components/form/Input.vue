@@ -4,6 +4,7 @@ import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
 import bindProps from '../utils/bindProps'
+import RoundedProps from '../rounded.props'
 import InputProps from './Input.props'
 import FormProps from './Form.props'
 
@@ -25,6 +26,7 @@ export default {
     ...InputProps,
     ...CommonsProps,
     ...SizeProps,
+    ...RoundedProps,
     ...FormProps
   },
   computed: {
@@ -52,7 +54,7 @@ export default {
   render (h) {
     const childrens = [h('input', {
       ref: 'component',
-      class: [this.config.Input.fixed, this.config.Input.variant, this.config.Input.size, this.config.Input.validation],
+      class: [this.config.Input.fixed, this.config.Input.variant, this.config.Input.size, this.config.Input.validation, this.config.Input.rounded],
       attrs: {
         type: this.type,
         ...this.bind

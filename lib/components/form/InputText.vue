@@ -10,6 +10,7 @@ import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'
+import RoundedProps from '../rounded.props'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
 import InputMixin from './Input.mixin'
@@ -26,7 +27,8 @@ export default {
     ...CommonsProps,
     ...InputProps,
     ...InputGroupProps,
-    ...FormProps
+    ...FormProps,
+    ...RoundedProps
   },
   computed: {
     inputGroupProps () {
@@ -37,7 +39,7 @@ export default {
     },
     inputProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
         validation: this.localeValidation,
         configPath: 'InputText'
       }

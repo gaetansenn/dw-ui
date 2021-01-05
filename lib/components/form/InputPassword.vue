@@ -12,6 +12,7 @@ import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'
 import confirmMixin from '../confirm.mixin'
+import RoundedProps from '../rounded.props'
 import InputPasswordProps from './InputPassword.props'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
@@ -45,7 +46,8 @@ export default {
     ...CommonsProps,
     ...InputProps,
     ...InputGroupProps,
-    ...FormProps
+    ...FormProps,
+    ...RoundedProps
   },
   data () {
     return {
@@ -61,7 +63,7 @@ export default {
     },
     inputProps () {
       const inputProps = {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
         validation: this.localeValidation,
         configPath: 'InputPassword'
       }

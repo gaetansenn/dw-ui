@@ -37,6 +37,7 @@ import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import localeProp from '../utils/localeProp'
 import config from '../config.mixin'
+import RoundedProps from '../rounded.props'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
 import InputDatePickerProps from './InputDatepicker.props'
@@ -70,7 +71,8 @@ export default {
     ...CommonsProps,
     ...InputProps,
     ...InputGroupProps,
-    ...FormProps
+    ...FormProps,
+    ...RoundedProps
   },
   data () {
     return {
@@ -91,7 +93,7 @@ export default {
     },
     inputProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
         validation: this.localeValidation,
         configPath: 'InputDatePicker'
       }
