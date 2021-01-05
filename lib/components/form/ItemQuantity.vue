@@ -18,6 +18,7 @@
 import config from '../config.mixin'
 import localeProp from '../utils/localeProp'
 import syncProps from '../utils/syncProps'
+import SizeProps from '../size.props'
 import ItemQuantityProps from './ItemQuantity.props'
 import InputGroupProps from './InputGroup.props'
 
@@ -26,12 +27,13 @@ export default {
   mixins: [config, localeProp('value')],
   props: {
     ...InputGroupProps,
-    ...ItemQuantityProps
+    ...ItemQuantityProps,
+    ...SizeProps
   },
   computed: {
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps }))
+        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...SizeProps }))
       }
     }
   },
