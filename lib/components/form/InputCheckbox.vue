@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     isChecked () {
-      return Array.isArray(this.selected) ? this.selected.includes(this.value) : this.selected
+      return Array.isArray(this.selected) ? this.selected.includes(this.value) : !!this.selected
     },
     inputProps () {
       return {
