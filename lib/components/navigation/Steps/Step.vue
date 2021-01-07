@@ -6,7 +6,7 @@
           {{ index + 1 }}
         </div>
       </div>
-      <div v-if="index !== size - 1" :class="[config.line.fixed, config.line.classes]" />
+      <div v-if="index !== size - 1" :class="[config.line.fixed, config.line.classes]" :style="config.line.style" />
     </div>
     <slot name="title" :title="title">
       <div :class="[config.title.fixed, config.title.classes]">
