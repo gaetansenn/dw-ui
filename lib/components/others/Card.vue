@@ -71,10 +71,10 @@ export default {
       class: [this.config.content.fixed, this.config.content.classes]
     }
 
-    if (this.header || this.$slots.header) {
+    if (this.header || this.$scopedSlots.header) {
       const headerChildrens = []
 
-      if (this.$slots.header) headerChildrens.push(this.$slots.header)
+      if (this.$scopedSlots.header) headerChildrens.push(this.$scopedSlots.header({ opened: this.opened }))
       else headerChildrens.push(this.header)
       if (this.collapse) headerChildrens.push(h('div', {
         class: [this.config.header.icon.fixed, this.config.header.icon.classes],
