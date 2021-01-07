@@ -1,5 +1,5 @@
 <template>
-  <label :class="config.wrapper" tabindex="0">
+  <label :class="[config.wrapper.fixed, config.wrapper.classes]" tabindex="0">
     <input type="checkbox" :class="config.input" :checked="checked" @click="toggle">
     <div :class="config.toggle.wrapper">
       <div :class="[config.toggle.fixed, config.toggle.classes]" />
