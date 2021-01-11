@@ -6,6 +6,7 @@ import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import RoundedProps from '../rounded.props'
 import localeProp from '../utils/localeProp'
+import DwInputGroup from './InputGroup'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
 import InputMixin from './Input.mixin'
@@ -14,6 +15,9 @@ import SelectProps from './Select.props'
 
 export default {
   configPath: 'Select',
+  components: {
+    DwInputGroup
+  },
   mixins: [i18n, config, InputMixin, localeProp('validation'), localeProp('value')],
   props: {
     ...SelectProps,
