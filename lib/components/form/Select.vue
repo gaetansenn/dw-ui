@@ -83,7 +83,9 @@ export default {
       class: this.config.wrapper
     }, [select, h('span', {
       class: [this.config.icon.fixed, this.config.icon.size],
-      innerHTML: !this.$slots.arrow ? { innerHTML: this.config.icon.icon } : {}
+      domProps: {
+        innerHTML: !this.$slots.arrow ? this.config.icon.icon : undefined
+      }
     }, this.$slots.arrow ? this.$slots.arrow : [])])])
   }
 }
