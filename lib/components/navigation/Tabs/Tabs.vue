@@ -33,6 +33,7 @@ export default {
   methods: {
     tabChange (tab) {
       this.currentName = tab
+      this.$emit('input', tab)
     }
   }
 }
