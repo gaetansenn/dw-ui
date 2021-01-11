@@ -1,22 +1,10 @@
-<template>
-  <DwInputGroup v-bind="inputGroupProps">
-    <select v-model="localeValue" :class="[config.fixed, config.variant, config.size]">
-      <option v-if="placeholder !== false" :value="emptyLocaleValue">
-        {{ placeholder || config.placeholder }}
-      </option>
-      <option v-for="(option, index) in localeOptions" :key="index" :value="option[valueKey]">
-        {{ option[labelKey] }}
-      </option>
-    </select>
-  </DwInputGroup>
-</template>
-
 <script>
 import i18n from '../utils/i18n'
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
+import RoundedProps from '../rounded.props'
 import localeProp from '../utils/localeProp'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
@@ -30,6 +18,7 @@ export default {
   props: {
     ...SelectProps,
     ...SizeProps,
+    ...RoundedProps,
     ...CommonsProps,
     ...InputProps,
     ...InputGroupProps,
@@ -60,6 +49,42 @@ export default {
     onLocaleValueChanged (newValue) {
       this.$emit('input', newValue)
     }
+  },
+  render (h) {
+    const selectChildrens = this.localeOptions.map((option) => {
+      return h('option', {
+        domProps: {
+          value: option[this.valueKey]
+        }
+      }, option[this.labelKey])
+    })
+
+    if (this.placeholder !== false) selectChildrens.unshift(h('option', {
+      domProps: {
+        value: this.emptyLocaleValue
+      }
+    }, this.placeholder || this.config.placeholder))
+
+    const select = h('select', {
+      domProps: {
+        value: this.value
+      },
+      on: {
+        input: (event) => {
+          this.$emit('input', event.target.value)
+        }
+      },
+      class: [this.config.fixed, this.config.size, this.config.variant, this.config.rounded]
+    }, selectChildrens)
+
+    return h('DwInputGroup', {
+      attrs: this.inputGroupProps
+    }, [h('div', {
+      class: this.config.wrapper
+    }, [select, h('span', {
+      class: [this.config.icon.fixed, this.config.icon.size],
+      innerHTML: !this.$slots.arrow ? { innerHTML: this.config.icon.icon } : {}
+    }, this.$slots.arrow ? this.$slots.arrow : [])])])
   }
 }
 </script>
