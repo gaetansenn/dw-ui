@@ -14,6 +14,17 @@
               <template v-if="$slots.header" #header>
                 <slot name="header" />
               </template>
+              <slot name="header">
+                <div v-if="title || closeButton" :class="config.modal.header.wrapper">
+                  <div v-if="title" :class="config.modal.header.fixed">
+                    {{ title }}
+                  </div>
+                  <div v-else>
+                    &nbsp;
+                  </div>
+                  <div v-if="closeButton" :class="config.modal.header.icon.fixed" @click="open = false" v-html="config.modal.header.icon.icon" />
+                </div>
+              </slot>
               <slot />
               <template v-if="$slots.footer" #footer>
                 <slot name="footer" />
@@ -34,6 +45,17 @@ export default {
   name: 'DwModal',
   mixins: [config],
   props: {
+    title: {
+      type: String,
+      default: null
+    },
+    /**
+     * Display close button
+     */
+    closeButton: {
+      type: Boolean,
+      default: true
+    },
     value: {
       type: Boolean,
       default: false
@@ -58,11 +80,6 @@ export default {
 
         this.$emit('input', open)
       }
-    }
-  },
-  methods: {
-    close () {
-      this.open = false
     }
   }
 }
