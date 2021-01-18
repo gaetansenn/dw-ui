@@ -12,11 +12,11 @@
         <DwConfigTransition appear :config="config.modal.transition">
           <div v-show="open" :class="config.modal.wrapper">
             <DwCard :submit="submit" config-path="Modal.Card">
-              <template v-if="$slots.header" #header>
+              <template v-if="this.$scopedSlots.header" #header>
                 <slot name="header" />
               </template>
-              <slot name="header">
-                <div v-if="title || closeButton" :class="config.modal.header.wrapper">
+              <template v-else-if="title || closeButton" #header>
+                <slot name="header">
                   <div v-if="title" :class="config.modal.header.fixed">
                     {{ title }}
                   </div>
@@ -30,8 +30,8 @@
                     @click="open = false"
                     v-html="config.modal.header.icon.icon"
                   />
-                </div>
-              </slot>
+                </slot>
+              </template>
               <slot />
               <template v-if="$slots.footer" #footer>
                 <slot name="footer" />
