@@ -3,6 +3,7 @@
     <div
       v-show="open"
       :class="config.overlay.fixed"
+      tabindex="0"
     >
       <div :class="config.wrapper">
         <div :class="config.backdrop.wrapper">
@@ -22,7 +23,13 @@
                   <div v-else>
                     &nbsp;
                   </div>
-                  <div v-if="closeButton" :class="config.modal.header.icon.fixed" @click="open = false" v-html="config.modal.header.icon.icon" />
+                  <button
+                    v-if="closeButton"
+                    :class="config.modal.header.icon.fixed"
+                    aria-label="close"
+                    @click="open = false"
+                    v-html="config.modal.header.icon.icon"
+                  />
                 </div>
               </slot>
               <slot />
