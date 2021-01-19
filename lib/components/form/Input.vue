@@ -92,7 +92,7 @@ export default {
       })]))
 
     return h('div', {
-      class: 'relative'
+      class: this.config.Input.wrapper
     }, childrens)
   }
 }
