@@ -50,6 +50,12 @@ export default {
   methods: {
     validate () {
       return DEFAULT_VALIDATION.call(this, 'selected')
+    },
+    onChange () {
+      if (Array.isArray(this.selected))
+        if (this.isChecked) this.$emit('input', this.selected.filter(item => item !== this.value))
+        else this.$emit('input', [...this.selected, this.value])
+      else this.$emit('input', this.isChecked ? null : this.value)
     }
   }
 }
