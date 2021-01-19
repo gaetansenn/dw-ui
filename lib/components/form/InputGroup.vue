@@ -10,7 +10,7 @@
     </slot>
     <div :class="config.wrapper.classes">
       <slot />
-      <p v-if="validation" :id="`${name}-error`" :class="config.wrapper.validation" class="ml-1 mt-2">
+      <p v-if="validation" :id="`${name}-error`" :class="[config.wrapper.validation.fixed, config.wrapper.validation.classes]">
         {{ validation.description }}
       </p>
       <p v-else-if="help" :class="[config.wrapper.help.fixed, config.wrapper.help.size]">
