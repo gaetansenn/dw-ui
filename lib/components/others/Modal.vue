@@ -27,7 +27,7 @@
                     v-if="closeButton"
                     :class="config.modal.header.icon.fixed"
                     aria-label="close"
-                    @click="open = false"
+                    @click.prevent="open = false"
                     v-html="config.modal.header.icon.icon"
                   />
                 </slot>
