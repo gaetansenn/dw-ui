@@ -9,7 +9,7 @@ import config from '../config.mixin'
 
 export default {
   configPath: 'Transitions.Fade',
-  mixin: [config],
+  mixins: [config],
   props: {
     appear: {
       type: Boolean,

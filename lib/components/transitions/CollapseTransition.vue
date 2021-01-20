@@ -72,7 +72,7 @@ const transition = function () {
 }
 
 export default {
-  configPath: 'CollapseTransition',
+  configPath: 'Transitions.Collapse',
   name: 'DwCollapseTransition',
   mixins: [config],
   render (h) {
