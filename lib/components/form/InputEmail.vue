@@ -74,7 +74,7 @@ export default {
 
       if (!validate.call(this)) return false
 
-      return this.validateConfirm(this.translate('InputEmail.confirm'))
+      return this.validateConfirm('InputEmail.confirm')
     }
   }
 }
