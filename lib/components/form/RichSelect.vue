@@ -40,7 +40,7 @@
           <template>
             <li
               v-for="(option, i) in localeOptions"
-              :key="option[valueKey]"
+              :key="i"
               :ref="`option-${i}`"
               :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }]"
               @click.stop="toggleOption(option, i)"
@@ -117,11 +117,17 @@ export default {
      * Used to display the current selected item or default placeholder
      */
     localePlaceholder () {
-      return (this.localeOption && this.localeOption[this.valueKey]) ? this.localeOption[this.labelKey] : (this.placeholder || this.config.placeholder)
+      return (this.localeOption && this.localeOption[this.labelKey]) ? this.localeOption[this.labelKey] : (this.placeholder || this.config.placeholder)
     },
     localeOptions () {
-      return this.options.map((item) => {
-        if (typeof item === 'object') return item
+      return this.options.map((item, index) => {
+        if (typeof item === 'object')
+          if (this.valueKey) return item
+          else return {
+            undefined: index,
+            ...item
+          }
+
         return { [this.valueKey]: item, [this.labelKey]: item }
       })
     },
@@ -166,7 +172,7 @@ export default {
       this.opened = true
     },
     toggleOption (item, index) {
-      if (!item[this.valueKey]) return
+      if (item[this.valueKey] === undefined || item[this.valueKey] === null) return
       if (this.localeOption && item[this.valueKey] === this.localeOption[this.valueKey]) return this.unselectOption()
 
       return this.selectOption(item, index)
@@ -176,10 +182,17 @@ export default {
      */
     selectOption (item, index) {
       this.index = index
+
+      // Get original option
+      let value
+
+      if (this.valueKey) value = this.options.find(option => option[this.valueKey] === item[this.valueKey])[this.valueKey]
+      else value = this.options.find((option, index) => index === item[undefined])
+
       // Update v-model
-      this.$emit('input', item[this.valueKey])
+      this.$emit('input', value)
       // Send event of v-model change
-      this.$emit('change', item[this.valueKey])
+      this.$emit('change', value)
       this.close()
     },
     unselectOption () {
