@@ -135,12 +135,16 @@ export default {
 
       this.currentDate = new Date(this.currentDate.setMonth(month - 1))
       if (this.currentDate.getMonth() !== month - 1 && (this.currentDate.getMonth() !== 11 || (month === 11 && this.currentDate.getDate() === 1))) this.currentDate = new Date(this.currentDate.setDate(0))
+
+      this.$emit('prev-month')
     },
     nextMonth () {
       const month = this.currentDate.getMonth()
 
       this.currentDate = new Date(this.currentDate.setMonth(month + 1))
       if (this.currentDate.getMonth() !== month + 1 && this.currentDate.getMonth() !== 0) this.currentDate = new Date(this.currentDate.setDate(0))
+
+      this.$emit('next-month')
     },
     selectDate (date) {
       this.localeValue = date
