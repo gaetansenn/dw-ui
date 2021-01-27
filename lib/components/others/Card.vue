@@ -94,18 +94,19 @@ export default {
       childrens.push(h('div', header, headerChildrens))
     }
 
-    if (this.collapse)
-      childrens.push(h('CollapseTransition', [h('div', {
-        directives: [{
-          name: 'show',
-          rawName: 'v-show',
-          value: (this.opened),
-          expression: 'opened'
-        }],
-        ...content
-      }, [this.$slots.default])]))
-    else
-      childrens.push(h('div', content, [this.$slots.default]))
+    if (this.$slots.default)
+      if (this.collapse)
+        childrens.push(h('CollapseTransition', [h('div', {
+          directives: [{
+            name: 'show',
+            rawName: 'v-show',
+            value: (this.opened),
+            expression: 'opened'
+          }],
+          ...content
+        }, [this.$slots.default])]))
+      else
+        childrens.push(h('div', content, [this.$slots.default]))
 
     if (this.$slots.footer) childrens.push(h('div', {
       class: [this.config.footer.fixed, this.config.footer.classes]

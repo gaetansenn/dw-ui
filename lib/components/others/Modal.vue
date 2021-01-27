@@ -11,7 +11,7 @@
         </div>
         <DwConfigTransition appear :config="config.modal.transition">
           <div v-show="open" :class="config.modal.wrapper">
-            <DwCard :submit="submit" config-path="Modal.Card">
+            <DwCard :submit="submit" :root-path="rootPath ? `${rootPath}.Modal` : 'Modal'">
               <template v-if="this.$scopedSlots.header" #header>
                 <slot name="header" />
               </template>
