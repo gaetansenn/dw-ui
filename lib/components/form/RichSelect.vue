@@ -42,7 +42,7 @@
               v-for="(option, i) in localeOptions"
               :key="i"
               :ref="`option-${i}`"
-              :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }]"
+              :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }, option.disabled ? config.option.disabled : config.option.active]"
               @click.stop="toggleOption(option, i)"
             >
               <slot :option="option" :selected="selectedIndex === i" name="option">
@@ -172,6 +172,7 @@ export default {
       this.opened = true
     },
     toggleOption (item, index) {
+      if (item.disabled) return
       if (item[this.valueKey] === undefined || item[this.valueKey] === null) return
       if (this.localeOption && item[this.valueKey] === this.localeOption[this.valueKey]) return this.unselectOption()
 

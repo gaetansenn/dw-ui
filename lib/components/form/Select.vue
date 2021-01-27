@@ -58,7 +58,8 @@ export default {
     const selectChildrens = this.localeOptions.map((option) => {
       return h('option', {
         domProps: {
-          value: option[this.valueKey]
+          value: option[this.valueKey],
+          disabled: option.disabled
         }
       }, option[this.labelKey])
     })
