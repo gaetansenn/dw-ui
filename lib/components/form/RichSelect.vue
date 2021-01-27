@@ -137,7 +137,8 @@ export default {
     selectedIndex () {
       if (!this.localeOption) return -1
 
-      return this.localeOptions.findIndex(option => option[this.valueKey] === this.localeOption[this.valueKey])
+      if (this.valueKey) return this.localeOptions.findIndex(option => option[this.valueKey] === this.localeOption[this.valueKey])
+      else return this.localeOptions.findIndex((option, index) => option[this.valueKey] === index)
     },
     inputGroupProps () {
       return {
