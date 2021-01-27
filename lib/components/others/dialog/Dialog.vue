@@ -28,10 +28,11 @@
 
 <script>
 import config from '../../config.mixin'
+import i18n from '../../utils/i18n'
 
 export default {
   configPath: 'Dialog',
-  mixins: [config],
+  mixins: [i18n, config],
   data () {
     return {
       opened: false,
@@ -39,8 +40,8 @@ export default {
       ongoing: false,
       title: '',
       body: '',
-      cancel: 'cancel', // this._i18n.t('commons.actions.cancel'),
-      submit: 'submit', // this._i18n.t('commons.actions.submit'),
+      cancel: this.translate('Dialog.cancel'),
+      submit: this.translate('Dialog.submit'),
       onClose: null,
       onSubmit: null
     }
