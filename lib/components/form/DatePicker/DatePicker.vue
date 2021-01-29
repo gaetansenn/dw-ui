@@ -110,7 +110,13 @@ export default {
       })
     }
   },
+  watch: {
+    value: 'onValueChanged'
+  },
   methods: {
+    onValueChanged (newValue) {
+      this.localeValue = newValue
+    },
     // Return begining of day of specific date
     getBeginingOfDay (date) {
       return new Date(date.getFullYear(), date.getMonth(), date.getDate())
