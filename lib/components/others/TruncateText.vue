@@ -7,13 +7,14 @@
     </div>
     <div v-if="more" :class="config.action" @click="toggle">
       <slot :opened="opened" name="more">
-        {{ opened ? (seeLess || config.seeLess) : (seeMore || config.seeMore) }}
+        {{ opened ? seeLessLabel : seeMoreLabel }}
       </slot>
     </div>
   </div>
 </template>
 
 <script>
+import i18n from '../utils/i18n'
 import config from '../config.mixin'
 import TruncateText from './TruncateText.props'
 
@@ -21,7 +22,7 @@ import TruncateText from './TruncateText.props'
 
 export default {
   configPath: 'TruncateText',
-  mixins: [config],
+  mixins: [i18n, config],
   props: {
     ...TruncateText
   },
@@ -31,10 +32,21 @@ export default {
       opened: false
     }
   },
+  computed: {
+    seeLessLabel () {
+      return this.seeLess || this.translate('TruncateText.seeLess')
+    },
+    seeMoreLabel () {
+      return this.seeMore || this.translate('TruncateText.seeMore')
+    }
+  },
   mounted () {
-    const elm = this.$refs.text
+    console.log(this.expandable)
+    if (this.expandable) {
+      const elm = this.$refs.text
 
-    if (elm.scrollHeight > elm.getBoundingClientRect().height) this.more = true
+      if (elm.scrollHeight > elm.getBoundingClientRect().height) this.more = true
+    }
   },
   methods: {
     toggle () {
