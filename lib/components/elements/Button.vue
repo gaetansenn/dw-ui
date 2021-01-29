@@ -12,6 +12,7 @@ import HrefProps from '../href.props'
 import ToProps from '../to.props'
 import RoundedProps from '../rounded.props'
 import CommonsProps from '../commons.props'
+import TargetLinkProps from '../target-link.props'
 import ButtonProps from './Button.props'
 
 export default {
@@ -23,7 +24,8 @@ export default {
     ...CommonsProps,
     ...ButtonProps,
     ...HrefProps,
-    ...ToProps
+    ...ToProps,
+    ...TargetLinkProps
   },
   computed: {
     is () {
