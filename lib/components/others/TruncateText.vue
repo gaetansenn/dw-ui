@@ -41,7 +41,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.expandable)
     if (this.expandable) {
       const elm = this.$refs.text
 
