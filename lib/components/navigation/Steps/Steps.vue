@@ -18,6 +18,11 @@ export default {
       steps: this
     }
   },
+  methods: {
+    select (index) {
+      this.$emit('input', index)
+    }
+  },
   render (h) {
     const items = this.$slots.default.filter(function (n) {
       return n.componentOptions && n.componentOptions.tag === 'DwStep'
