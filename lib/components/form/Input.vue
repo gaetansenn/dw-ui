@@ -8,7 +8,12 @@ import RoundedProps from '../rounded.props'
 import InputProps from './Input.props'
 import FormProps from './Form.props'
 
+const DwTooltip = () => import('../others/Tooltip')
+
 export default {
+  components: {
+    DwTooltip
+  },
   mixins: [config],
   props: {
     value: {
@@ -34,7 +39,7 @@ export default {
       return this.icon && this.leading
     },
     isTrailing () {
-      return this.icon && this.trailing
+      return (this.icon && this.trailing) || this.helpTooltip
     }
   },
   created () {
@@ -76,20 +81,33 @@ export default {
       }
     })]
 
-    if (this.isTrailing)
-      childrens.push(h('div', {
+    if (this.isTrailing) {
+      const icon = h('div', {
+        class: [this.config.Input.icon.fixed, this.config.Input.icon.size],
+        domProps: {
+          innerHTML: this.icon || this.config.Input.help.icon
+        }
+      })
+
+      const trailingWrapper = {
         class: [this.config.Input.trailing.fixed, this.config.Input.trailing.classes],
         on: {
           click: () => {
             this.$emit('trailing-click')
           }
         }
-      }, [h('div', {
-        class: [this.config.Input.icon.fixed, this.config.Input.icon.size],
-        domProps: {
-          innerHTML: this.icon
-        }
-      })]))
+      }
+
+      if (this.helpTooltip)
+        childrens.push(h('div', trailingWrapper, [h('DwTooltip', {
+          props: {
+            position: 'bottomRight',
+            content: this.helpTooltip
+          }
+        }, [icon])]))
+      else
+        childrens.push(h('div', trailingWrapper, [icon]))
+    }
 
     return h('div', {
       class: this.config.Input.wrapper
