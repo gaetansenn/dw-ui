@@ -46,7 +46,7 @@
               @click.stop="toggleOption(option, i)"
             >
               <slot :option="option" :selected="selectedIndex === i" name="option">
-                <span>{{ option[labelKey] }}</span>
+                <span>{{ option.label }}</span>
               </slot>
             </li>
           </template>
@@ -95,40 +95,39 @@ export default {
     }
   },
   computed: {
+    optionsObject () {
+      return typeof this.options[0] === 'object'
+    },
+    optionsWithIndex () {
+      return this.optionsObject && !this.valueKey
+    },
     /** Label to display during loading */
     localeLoadingLabel () {
       return this.loadingLabel || this.translate('RichSelect.loading')
     },
     /** Current option as Object */
     localeOption () {
-      const _default = { [this.valueKey]: this.value || '', [this.labelKey]: this.value || '' }
+      const _default = { value: this.value || '', label: this.value || '' }
 
       if (!this.value) return _default
 
-      if (typeof this.value === 'object') return this.value
-
-      return this.localeOptions.find((option) => {
-        if (typeof option === 'object') return option[this.valueKey] === this.value
-
-        return option === this.value
+      return this.localeOptions.find((localeOption) => {
+        if (this.valueKey) return localeOption.value === this.value
+        return localeOption.original === this.value
       })
     },
     /**
      * Used to display the current selected item or default placeholder
      */
     localePlaceholder () {
-      return (this.localeOption && this.localeOption[this.labelKey]) ? this.localeOption[this.labelKey] : (this.placeholder || this.config.placeholder)
+      return (this.localeOption && this.localeOption.label) ? this.localeOption.label : (this.placeholder || this.config.placeholder)
     },
     localeOptions () {
       return this.options.map((item, index) => {
-        if (typeof item === 'object')
-          if (this.valueKey) return item
-          else return {
-            undefined: index,
-            ...item
-          }
+        const objectOption = typeof item === 'object'
+        const option = { value: objectOption ? item[this.valueKey] : item, label: objectOption ? item[this.labelKey] : item, disabled: item.disabled, original: item }
 
-        return { [this.valueKey]: item, [this.labelKey]: item }
+        return option
       })
     },
     /**
@@ -137,8 +136,7 @@ export default {
     selectedIndex () {
       if (!this.localeOption) return -1
 
-      if (this.valueKey) return this.localeOptions.findIndex(option => option[this.valueKey] === this.localeOption[this.valueKey])
-      else return this.localeOptions.findIndex((option, index) => option[this.valueKey] === index)
+      return this.localeOptions.findIndex(localeOption => localeOption === this.localeOption)
     },
     inputGroupProps () {
       return {
@@ -174,8 +172,7 @@ export default {
     },
     toggleOption (item, index) {
       if (item.disabled) return
-      if (item[this.valueKey] === undefined || item[this.valueKey] === null) return
-      if (this.localeOption && item[this.valueKey] === this.localeOption[this.valueKey]) return this.unselectOption()
+      if (this.localeOption === item) return this.unselectOption()
 
       return this.selectOption(item, index)
     },
@@ -185,16 +182,10 @@ export default {
     selectOption (item, index) {
       this.index = index
 
-      // Get original option
-      let value
-
-      if (this.valueKey) value = this.options.find(option => option[this.valueKey] === item[this.valueKey])[this.valueKey]
-      else value = this.options.find((option, index) => index === item[undefined])
-
       // Update v-model
-      this.$emit('input', value)
+      this.$emit('input', item.value || item.original)
       // Send event of v-model change
-      this.$emit('change', value)
+      this.$emit('change', item.value || item.original)
       this.close()
     },
     unselectOption () {
