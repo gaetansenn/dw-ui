@@ -125,7 +125,7 @@ export default {
     localeOptions () {
       return this.options.map((item, index) => {
         const objectOption = typeof item === 'object'
-        const option = { value: objectOption ? item[this.valueKey] : item, label: objectOption ? item[this.labelKey] : item, disabled: item.disabled, original: item }
+        const option = { value: objectOption ? item[this.valueKey] : item, label: objectOption ? item[this.labelKey] : item, disabled: item.disabled, original: item, ...item }
 
         return option
       })
