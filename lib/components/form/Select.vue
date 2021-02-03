@@ -6,6 +6,7 @@ import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import RoundedProps from '../rounded.props'
 import localeProp from '../utils/localeProp'
+import DisabledProps from '../disabled.props'
 import DwInputGroup from './InputGroup'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
@@ -26,6 +27,7 @@ export default {
     ...CommonsProps,
     ...InputProps,
     ...InputGroupProps,
+    ...DisabledProps,
     ...FormProps
   },
   computed: {
@@ -72,7 +74,8 @@ export default {
 
     const select = h('select', {
       domProps: {
-        value: this.value
+        value: this.value,
+        disabled: this.disabled
       },
       on: {
         input: (event) => {
@@ -87,7 +90,7 @@ export default {
     }, [h('div', {
       class: this.config.wrapper
     }, [select, h('span', {
-      class: [this.config.icon.fixed, this.config.icon.size],
+      class: [this.config.icon.fixed, this.config.icon.size, this.config.icon.classes],
       domProps: {
         innerHTML: !this.$slots.arrow ? this.config.icon.icon : undefined
       }
