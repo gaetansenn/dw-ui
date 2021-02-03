@@ -17,7 +17,7 @@
               </div>
             </div>
           </slot>
-          <slot v-else name="label" :value="localePlaceholder" :option="localeOption">
+          <slot v-else name="label" :value="localePlaceholder" :option="localeOption.original">
             <span>{{ localePlaceholder }}</span>
           </slot>
         </button>
@@ -45,7 +45,7 @@
               :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }, option.disabled ? config.option.disabled : config.option.active]"
               @click.stop="toggleOption(option, i)"
             >
-              <slot :option="option" :selected="selectedIndex === i" name="option">
+              <slot :option="option.original" :selected="selectedIndex === i" name="option">
                 <span>{{ option.label }}</span>
               </slot>
             </li>
@@ -125,7 +125,7 @@ export default {
     localeOptions () {
       return this.options.map((item, index) => {
         const objectOption = typeof item === 'object'
-        const option = { value: objectOption ? item[this.valueKey] : item, label: objectOption ? item[this.labelKey] : item, disabled: item.disabled, original: item, ...item }
+        const option = { value: objectOption ? item[this.valueKey] : item, label: objectOption ? item[this.labelKey] : item, disabled: item.disabled, original: item }
 
         return option
       })
