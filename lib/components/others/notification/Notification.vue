@@ -8,7 +8,7 @@
     <component :is="to ? 'nuxt-link' : 'div'" :to="to" :class="config.fixed">
       <div :class="[config.type.classes, config.type.fixed]" v-html="config.type.icon" />
       <div :class="config.body.fixed">
-        <p :class="config.body.title">
+        <p v-if="title" :class="config.body.title">
           {{ title }}
         </p>
         <!-- eslint-disable-next-line -->
@@ -44,7 +44,7 @@ export default {
     },
     title: {
       type: String,
-      required: true
+      default: null
     },
     description: {
       type: String,
