@@ -34,6 +34,11 @@ export default {
     ...RoundedProps,
     ...FormProps
   },
+  data () {
+    return {
+      focused: false
+    }
+  },
   computed: {
     isLeading () {
       return this.icon && this.leading
@@ -62,13 +67,22 @@ export default {
       class: [this.config.Input.fixed, this.config.Input.variant, this.config.Input.size, this.config.Input.validation, this.config.Input.rounded],
       attrs: {
         type: this.type,
-        ...this.bind
+        ...this.bind,
+        id: this.name
       },
       domProps: {
         value: this.value,
         checked: this.checked
       },
       on: {
+        blur: () => {
+          this.focused = false
+          this.$emit('blur')
+        },
+        focus: () => {
+          this.focused = true
+          this.$emit('focus')
+        },
         input: ($event) => {
           this.$emit('input', $event.target.value)
         },

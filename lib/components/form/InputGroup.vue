@@ -2,7 +2,7 @@
   <div :class="[config.fixed, config.classes]">
     <slot name="label">
       <div :class="config.label.wrapper">
-        <label v-if="label" :class="[config.label.fixed, config.label.classes, config.label.size]">
+        <label v-if="label" :class="[config.label.fixed, config.label.classes, config.label.size]" :for="name">
           {{ label }}
           <span v-if="required" :class="config.label.star">*</span>
         </label>
@@ -24,13 +24,14 @@
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
+import localeProp from '../utils/localeProp'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
 import FormProps from './Form.props'
 
 export default {
   configPath: 'InputGroup',
-  mixins: [config],
+  mixins: [config, localeProp('focused')],
   props: {
     ...SizeProps,
     ...CommonsProps,
