@@ -10,8 +10,8 @@
     <template slot="footer">
       <DwButton
         :focus="opened"
-        :loading="ongoing"
-        :disabled="ongoing"
+        :loading="ongoing.submit"
+        :disabled="ongoing.cancel || ongoing.submit"
         :class="config.button.submit.fixed"
         :variant="config.button.submit.variant"
         block
@@ -19,7 +19,14 @@
       >
         {{ submit }}
       </DwButton>
-      <DwButton :variant="config.button.cancel.variant" :disabled="ongoing" :class="config.button.cancel.fixed" block @click.native="onCancel">
+      <DwButton
+        :variant="config.button.cancel.variant"
+        :disabled="ongoing.cancel || ongoing.submit"
+        :class="config.button.cancel.fixed"
+        block
+        :loading="ongoing.cancel"
+        @click.native="onCancel"
+      >
         {{ cancel }}
       </DwButton>
     </template>
@@ -36,8 +43,10 @@ export default {
   data () {
     return {
       opened: false,
-      // Submit button loading
-      ongoing: false,
+      ongoing: {
+        submit: false,
+        cancel: false
+      },
       title: '',
       body: '',
       cancel: this.translate('Dialog.cancel'),
@@ -47,23 +56,31 @@ export default {
     }
   },
   methods: {
-    changeOngoing (value) {
-      this.ongoing = value
+    changeOngoing (value, scope = 'submit') {
+      this.ongoing[scope] = value
     },
     close () {
       this.opened = false
     },
-    onCancel () {
+    async onCancel () {
       if (!this.opened) return
 
-      if (typeof this.onClose === 'function') this.onClose()
-      else this.opened = false
+      if (typeof this.onClose === 'function') {
+        this.ongoing.cancel = true
+        await this.onClose(this)
+        this.ongoing.cancel = false
+        this.opened = false
+      } else this.opened = false
     },
-    validate () {
+    async validate () {
       if (!this.opened) return
 
-      this.opened = false
-      if (typeof this.onSubmit === 'function') this.onSubmit()
+      if (typeof this.onSubmit === 'function') {
+        this.ongoing.submit = true
+        await this.onSubmit(this)
+        this.ongoing.submit = false
+        this.opened = false
+      } else this.opened = false
     }
   }
 }
