@@ -17,7 +17,7 @@ export default {
   mixins: [config],
   props: {
     value: {
-      type: [String, Number, Object, Boolean],
+      type: [String, Number, Object, Boolean, Date],
       default: ''
     },
     type: {
