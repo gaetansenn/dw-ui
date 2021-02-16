@@ -16,7 +16,7 @@ import i18n from '../utils/i18n'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import RoundedProps from '../rounded.props'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
@@ -30,7 +30,7 @@ export function validate () {
   const test = regex.test(this.value)
 
   if (!test) {
-    this.localeValidation = {
+    this.localValidation = {
       type: 'error',
       description: this.translate('InputDate.valid')
     }
@@ -42,7 +42,7 @@ export function validate () {
 }
 
 export default {
-  mixins: [i18n, InputMixin, localeProp('validation')],
+  mixins: [i18n, InputMixin, localProp('validation')],
   props: {
     value: {
       type: String,
@@ -59,13 +59,13 @@ export default {
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localValidation
       }
     },
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
-        validation: this.localeValidation,
+        validation: this.localValidation,
         configPath: 'InputDate'
       }
     }

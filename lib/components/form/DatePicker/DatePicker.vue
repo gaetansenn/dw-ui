@@ -53,15 +53,15 @@ export default {
     ...DatePickerProps
   },
   data () {
-    let localeValue = this.value ? new Date(this.value) : new Date()
+    let localValue = this.value ? new Date(this.value) : new Date()
 
     // If date is invalid set date to today
-    if (localeValue.toString() === 'Invalid Date') localeValue = new Date()
+    if (localValue.toString() === 'Invalid Date') localValue = new Date()
 
     return {
-      localeValue,
+      localValue,
       today: this.getBeginingOfDay(new Date()),
-      currentDate: this.getBeginingOfDay(localeValue)
+      currentDate: this.getBeginingOfDay(localValue)
     }
   },
   computed: {
@@ -103,7 +103,7 @@ export default {
         return {
           date,
           today: date.getTime() === this.today.getTime(),
-          selected: this.localeValue && date.getTime() === this.localeValue.getTime(),
+          selected: this.localValue && date.getTime() === this.localValue.getTime(),
           disabled: this.isDateDisabled(date, this.disabledDates),
           current: date.getMonth() === this.currentDate.getMonth()// Is current month
         }
@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     onValueChanged (newValue) {
-      this.localeValue = newValue
+      this.localValue = newValue
     },
     // Return begining of day of specific date
     getBeginingOfDay (date) {
@@ -153,9 +153,9 @@ export default {
       this.$emit('next-month')
     },
     selectDate (date) {
-      this.localeValue = date
+      this.localValue = date
 
-      this.$emit('input', this.localeValue)
+      this.$emit('input', this.localValue)
     }
   }
 }

@@ -16,7 +16,7 @@ import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import confirmMixin from '../confirm.mixin'
 import SizeProps from '../size.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import i18n from '../utils/i18n'
 import RoundedProps from '../rounded.props'
 import InputProps from './Input.props'
@@ -31,7 +31,7 @@ export function validate () {
   const test = regex.test(this.value.toLowerCase())
 
   if (!test) {
-    this.localeValidation = {
+    this.localValidation = {
       type: 'error',
       description: this.translate('InputEmail.valid')
     }
@@ -43,7 +43,7 @@ export function validate () {
 }
 
 export default {
-  mixins: [i18n, InputMixin, localeProp('validation'), confirmMixin],
+  mixins: [i18n, InputMixin, localProp('validation'), confirmMixin],
   props: {
     value: {
       type: String,
@@ -60,13 +60,13 @@ export default {
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localValidation
       }
     },
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
-        validation: this.localeValidation,
+        validation: this.localValidation,
         configPath: 'InputEmail'
       }
     }

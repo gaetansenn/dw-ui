@@ -13,7 +13,7 @@ import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import i18n from '../utils/i18n'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import SizeProps from '../size.props'
 import InputRadio from './InputRadio.props'
 import { DEFAULT_VALIDATION } from './Input.mixin'
@@ -22,7 +22,7 @@ import FormProps from './Form.props'
 
 export default {
   configPath: 'InputRadio',
-  mixins: [i18n, config, localeProp('validation')],
+  mixins: [i18n, config, localProp('validation')],
   model: {
     prop: 'selected',
     event: 'input'
@@ -38,7 +38,7 @@ export default {
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation,
+        validation: this.localValidation,
         checked: JSON.stringify(this.selected) === JSON.stringify(this.value),
         configPath: 'InputRadio'
       }

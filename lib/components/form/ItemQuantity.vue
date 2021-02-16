@@ -2,13 +2,13 @@
   <DwInputGroup v-bind="inputGroupProps">
     <div :class="config.wrapper">
       <slot name="remove">
-        <button :class="config.remove.fixed" :disabled="localeValue === min" @click="localeRemove" v-html="config.remove.icon" />
+        <button :class="config.remove.fixed" :disabled="localValue === min" @click="localRemove" v-html="config.remove.icon" />
       </slot>
       <div :class="config.fixed">
-        {{ localeValue }}
+        {{ localValue }}
       </div>
       <slot name="add">
-        <button :class="config.add.fixed" :disabled="localeValue === max" @click="localeAdd" v-html="config.add.icon" />
+        <button :class="config.add.fixed" :disabled="localValue === max" @click="localAdd" v-html="config.add.icon" />
       </slot>
     </div>
   </DwInputGroup>
@@ -16,7 +16,7 @@
 
 <script>
 import config from '../config.mixin'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import ItemQuantityProps from './ItemQuantity.props'
@@ -24,7 +24,7 @@ import InputGroupProps from './InputGroup.props'
 
 export default {
   configPath: 'ItemQuantity',
-  mixins: [config, localeProp('value')],
+  mixins: [config, localProp('value')],
   props: {
     ...InputGroupProps,
     ...ItemQuantityProps,
@@ -38,15 +38,15 @@ export default {
     }
   },
   methods: {
-    localeAdd () {
+    localAdd () {
       if (this.add) this.add()
 
-      else this.$emit('input', this.localeValue + 1)
+      else this.$emit('input', this.localValue + 1)
     },
-    localeRemove () {
+    localRemove () {
       if (this.remove) this.remove()
 
-      else this.$emit('input', this.localeValue - 1)
+      else this.$emit('input', this.localValue - 1)
     }
   }
 }

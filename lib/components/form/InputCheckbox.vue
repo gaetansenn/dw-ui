@@ -11,7 +11,7 @@
 <script>
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import syncProps from '../utils/syncProps'
 import i18n from '../utils/i18n'
 import SizeProps from '../size.props'
@@ -22,7 +22,7 @@ import FormProps from './Form.props'
 
 export default {
   configPath: 'InputCheckbox',
-  mixins: [i18n, config, localeProp('validation')],
+  mixins: [i18n, config, localProp('validation')],
   model: {
     prop: 'selected',
     event: 'input'
@@ -41,7 +41,7 @@ export default {
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation,
+        validation: this.localValidation,
         checked: this.isChecked,
         configPath: 'InputCheckbox'
       }

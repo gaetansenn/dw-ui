@@ -24,14 +24,14 @@
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import SizeProps from '../size.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
 import FormProps from './Form.props'
 
 export default {
   configPath: 'InputGroup',
-  mixins: [config, localeProp('focused')],
+  mixins: [config, localProp('focused')],
   props: {
     ...SizeProps,
     ...CommonsProps,

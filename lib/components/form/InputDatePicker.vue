@@ -20,7 +20,7 @@
       />
       <DwDatePicker
         v-if="opened"
-        v-model="localeValue"
+        v-model="localValue"
         v-bind="datePickerProps"
         :class="config.DatePicker.fixed"
         @click.native="toggle"
@@ -37,7 +37,7 @@ import CommonsProps from '../commons.props'
 import ClickAway from '../directives/click-away'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import config from '../config.mixin'
 import RoundedProps from '../rounded.props'
 import InputProps from './Input.props'
@@ -49,7 +49,7 @@ import FormProps from './Form.props'
 
 export function validate () {
   if ((new Date(this.value)).toString() === 'Invalid Date') {
-    this.localeValidation = {
+    this.localValidation = {
       type: 'error',
       description: this.translate('InputDatePicker.valid')
     }
@@ -65,7 +65,7 @@ export default {
   directives: {
     'click-away': ClickAway
   },
-  mixins: [config, i18n, InputMixin, localeProp('value'), localeProp('validation')],
+  mixins: [config, i18n, InputMixin, localProp('value'), localProp('validation')],
   props: {
     ...InputDatePickerProps,
     ...DatePickerProps,
@@ -83,20 +83,20 @@ export default {
   },
   computed: {
     formatedValue () {
-      if (!this.localeValue) return ''
+      if (!this.localValue) return ''
 
-      return new Date(this.localeValue).toLocaleDateString(this.locale, this.format || {})
+      return new Date(this.localValue).toLocaleDateString(this.locale, this.format || {})
     },
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localValidation
       }
     },
     inputProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
-        validation: this.localeValidation,
+        validation: this.localValidation,
         configPath: 'InputDatePicker'
       }
     },

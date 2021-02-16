@@ -13,12 +13,12 @@
             <div class="flex items-center">
               <div :class="config.loading.fixed" v-html="config.loading.icon" />
               <div class="text-sm ml-2">
-                {{ localeLoadingLabel }}
+                {{ localLoadingLabel }}
               </div>
             </div>
           </slot>
-          <slot v-else name="label" :value="localePlaceholder" :option="localeOption ? localeOption.original : false">
-            <span>{{ localePlaceholder }}</span>
+          <slot v-else name="label" :value="localPlaceholder" :option="localOption ? localOption.original : false">
+            <span>{{ localPlaceholder }}</span>
           </slot>
         </button>
       </div>
@@ -39,7 +39,7 @@
         >
           <template>
             <li
-              v-for="(option, i) in localeOptions"
+              v-for="(option, i) in localOptions"
               :key="i"
               :ref="`option-${i}`"
               :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }, option.disabled ? config.option.disabled : config.option.active]"
@@ -63,7 +63,7 @@ import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import DisabledProps from '../disabled.props'
 import InputProps from './Input.props'
 import InputGroupProps from './InputGroup.props'
@@ -77,7 +77,7 @@ export default {
   directives: {
     'click-away': ClickAway
   },
-  mixins: [i18n, config, InputMixin, localeProp('validation'), localeProp('value')],
+  mixins: [i18n, config, InputMixin, localProp('validation'), localProp('value')],
   props: {
     ...RichSelectProps,
     ...SelectProps,
@@ -102,27 +102,27 @@ export default {
       return this.optionsObject && !this.valueKey
     },
     /** Label to display during loading */
-    localeLoadingLabel () {
+    localLoadingLabel () {
       return this.loadingLabel || this.translate('RichSelect.loading')
     },
     /** Current option as Object */
-    localeOption () {
+    localOption () {
       const _default = { value: this.value || '', label: this.value || '' }
 
       if (!this.value) return _default
 
-      return this.localeOptions.find((localeOption) => {
-        if (this.valueKey) return localeOption.value === this.value
-        return localeOption.original === this.value
+      return this.localOptions.find((localOption) => {
+        if (this.valueKey) return localOption.value === this.value
+        return localOption.original === this.value
       })
     },
     /**
      * Used to display the current selected item or default placeholder
      */
-    localePlaceholder () {
-      return (this.localeOption && this.localeOption.label) ? this.localeOption.label : (this.placeholder || this.config.placeholder)
+    localPlaceholder () {
+      return (this.localOption && this.localOption.label) ? this.localOption.label : (this.placeholder || this.config.placeholder)
     },
-    localeOptions () {
+    localOptions () {
       return this.options.map((item, index) => {
         const objectOption = typeof item === 'object'
         const option = { value: objectOption ? item[this.valueKey] : item, label: objectOption ? item[this.labelKey] : item, disabled: item.disabled, original: item }
@@ -134,22 +134,22 @@ export default {
      * Selected active index
      */
     selectedIndex () {
-      if (!this.localeOption) return -1
+      if (!this.localOption) return -1
 
-      return this.localeOptions.findIndex(localeOption => localeOption === this.localeOption)
+      return this.localOptions.findIndex(localOption => localOption === this.localOption)
     },
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localValidation
       }
     }
   },
   watch: {
-    localeValue: 'onLocaleValueChanged'
+    localValue: 'onLocalValueChanged'
   },
   methods: {
-    onLocaleValueChanged (newValue) {
+    onLocalValueChanged (newValue) {
       this.$emit('input', newValue)
     },
     /**
@@ -172,7 +172,7 @@ export default {
     },
     toggleOption (item, index) {
       if (item.disabled) return
-      if (this.localeOption === item) return this.unselectOption()
+      if (this.localOption === item) return this.unselectOption()
 
       return this.selectOption(item, index)
     },

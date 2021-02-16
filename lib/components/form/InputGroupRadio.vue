@@ -2,7 +2,7 @@
 import i18n from '../utils/i18n'
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import InputMixin from './Input.mixin'
@@ -15,7 +15,7 @@ export default {
   components: {
     DwInputGroup
   },
-  mixins: [i18n, config, InputMixin, localeProp('validation')],
+  mixins: [i18n, config, InputMixin, localProp('validation')],
   props: {
     ...SizeProps,
     ...CommonsProps,
@@ -26,7 +26,7 @@ export default {
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...CommonsProps, ...SizeProps, ...InputGroupRadioProps, ...InputGroupProps })),
-        validation: this.localeValidation
+        validation: this.localValidation
       }
     }
   },

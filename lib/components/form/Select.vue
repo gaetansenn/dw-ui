@@ -5,7 +5,7 @@ import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
 import RoundedProps from '../rounded.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import DisabledProps from '../disabled.props'
 import DwInputGroup from './InputGroup'
 import InputProps from './Input.props'
@@ -19,7 +19,7 @@ export default {
   components: {
     DwInputGroup
   },
-  mixins: [i18n, config, InputMixin, localeProp('validation'), localeProp('value')],
+  mixins: [i18n, config, InputMixin, localProp('validation'), localProp('value')],
   props: {
     ...SelectProps,
     ...SizeProps,
@@ -31,11 +31,11 @@ export default {
     ...FormProps
   },
   computed: {
-    emptyLocaleValue () {
-      if (!this.localeOptions.find(item => item[this.valueKey] === this.localeValue)) return this.localeValue
+    emptyLocalValue () {
+      if (!this.localOptions.find(item => item[this.valueKey] === this.localValue)) return this.localValue
       return ''
     },
-    localeOptions () {
+    localOptions () {
       return this.options.map((item) => {
         if (typeof item === 'string' || typeof item === 'number') return { [this.valueKey]: item, [this.labelKey]: item }
         return item
@@ -44,20 +44,20 @@ export default {
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localValidation
       }
     }
   },
   watch: {
-    localeValue: 'onLocaleValueChanged'
+    localValue: 'onLocalValueChanged'
   },
   methods: {
-    onLocaleValueChanged (newValue) {
+    onLocalValueChanged (newValue) {
       this.$emit('input', newValue)
     }
   },
   render (h) {
-    const selectChildrens = this.localeOptions.map((option) => {
+    const selectChildrens = this.localOptions.map((option) => {
       return h('option', {
         domProps: {
           value: option[this.valueKey],
@@ -68,7 +68,7 @@ export default {
 
     if (this.placeholder !== false) selectChildrens.unshift(h('option', {
       domProps: {
-        value: this.emptyLocaleValue
+        value: this.emptyLocalValue
       }
     }, this.placeholder || this.config.placeholder))
 

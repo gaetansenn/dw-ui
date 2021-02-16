@@ -18,7 +18,7 @@ import config from '../config.mixin'
 import CommonsProps from '../commons.props'
 import syncProps from '../utils/syncProps'
 import SizeProps from '../size.props'
-import localeProp from '../utils/localeProp'
+import localProp from '../utils/localProp'
 import confirmMixin from '../confirm.mixin'
 import RoundedProps from '../rounded.props'
 import InputPasswordProps from './InputPassword.props'
@@ -34,7 +34,7 @@ export function validate () {
   const test = regex.test(this.value)
 
   if (!test) {
-    this.localeValidation = {
+    this.localValidation = {
       type: 'error',
       description: this.translate('InputPassword.valid')
     }
@@ -47,7 +47,7 @@ export function validate () {
 
 export default {
   configPath: 'InputPassword',
-  mixins: [i18n, config, InputMixin, localeProp('validation'), confirmMixin],
+  mixins: [i18n, config, InputMixin, localProp('validation'), confirmMixin],
   props: {
     ...InputPasswordProps,
     ...SizeProps,
@@ -66,13 +66,13 @@ export default {
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localeValidation
+        validation: this.localValidation
       }
     },
     inputProps () {
       const inputProps = {
         ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
-        validation: this.localeValidation,
+        validation: this.localValidation,
         configPath: 'InputPassword'
       }
 
