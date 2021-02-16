@@ -95,11 +95,13 @@ export default {
       // Case not required and empty (avoid continue checking)
       if (STOP_ON_EMPTY.call(this)) return true
 
-      const passwordValidate = typeof this.config.validate === 'function' ? this.config.validate.call(this) : validate.call(this)
+      if (this.validatePassword) {
+        const passwordValidate = typeof this.config.validate === 'function' ? this.config.validate.call(this) : validate.call(this)
 
-      if (!passwordValidate) return false
+        if (!passwordValidate) return false
 
-      return this.validateConfirm('InputPassword.confirm')
+        return this.validateConfirm('InputPassword.confirm')
+      }
     }
   }
 }
