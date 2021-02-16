@@ -15,6 +15,8 @@
         trailing
         :icon="config.icon.icon"
         @click.native="toggle"
+        @focus="onFocus"
+        @blur="onBlur"
       />
       <DwDatePicker
         v-if="opened"

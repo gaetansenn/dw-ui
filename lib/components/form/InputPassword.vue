@@ -1,6 +1,14 @@
 <template>
   <DwInputGroup v-bind="inputGroupProps">
-    <DwInput :value="value" v-bind="inputProps" :type="showPassword ? 'text' : 'password'" @input="(value) => $emit('input', value)" @trailing-click="showPassword = !showPassword" />
+    <DwInput
+      :value="value"
+      v-bind="inputProps"
+      :type="showPassword ? 'text' : 'password'"
+      @input="(value) => $emit('input', value)"
+      @trailing-click="showPassword = !showPassword"
+      @focus="onFocus"
+      @blur="onBlur"
+    />
   </DwInputGroup>
 </template>
 

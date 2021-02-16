@@ -1,6 +1,13 @@
 <template>
   <DwInputGroup v-bind="inputGroupProps">
-    <DwInput :value="value" v-bind="inputProps" type="email" @input="(value) => $emit('input', value)" />
+    <DwInput
+      :value="value"
+      v-bind="inputProps"
+      type="email"
+      @input="(value) => $emit('input', value)"
+      @focus="onFocus"
+      @blur="onBlur"
+    />
   </DwInputGroup>
 </template>
 
