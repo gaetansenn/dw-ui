@@ -101,7 +101,7 @@ export default {
         if (!passwordValidate) return false
 
         return this.validateConfirm('InputPassword.confirm')
-      }
+      } else return true
     }
   }
 }
