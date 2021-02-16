@@ -11,6 +11,7 @@
     "@dewib/dw-ui": "https://github.com/gaetansenn/dw-ui",
     "@nuxtjs/storybook": "^3.3.0",
     "@nuxtjs/tailwindcss": "^3.0.2",
+    "nuxt": "2.14.12",
     "nuxt-edge": "^2.15.0-26788356.847d4ae0",
     "nuxt-i18n": "^6.16.0"
   },

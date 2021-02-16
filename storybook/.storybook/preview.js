@@ -1,21 +1,21 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-import * as components from '../.nuxt-storybook/components';
-import { prepareForInline } from '../.nuxt-storybook/storybook/nuxt-entry';
+import * as components from '../.nuxt-storybook/components'
+import { prepareForInline } from '../.nuxt-storybook/storybook/nuxt-entry'
 
-import '~storybook';
+import '~storybook'
 
-Object.keys(components).forEach(name => Vue.component(name, components[name]));
+Object.keys(components).forEach(name => Vue.component(name, components[name]))
 
-const globalParameters = {};
+const globalParameters = {}
 globalParameters.docs = {
   ...globalParameters.docs,
-  prepareForInline,
-};
+  prepareForInline
+}
 
-export const parameters = globalParameters;
+export const parameters = globalParameters
 
-let currentLocale = 'en';
+let currentLocale = 'en'
 
 export const globalTypes = {
   locale: {
@@ -27,28 +27,28 @@ export const globalTypes = {
       items: [
         { value: 'en', right: '🇺🇸', title: 'English' },
         { value: 'fr', right: '🇫🇷', title: 'Français' }
-      ],
-    },
-  },
-};
+      ]
+    }
+  }
+}
 
 export const decorators = [
   (_, { globals }) => {
     if (globals.locale !== currentLocale) {
-      currentLocale = globals.locale;
+      currentLocale = globals.locale
     }
     return {
       template: '<story />',
       created () {
         if (this.$i18n) {
-          this.$i18n.locale = currentLocale;
+          this.$i18n.setLocale(currentLocale)
         }
       },
       updated () {
         if (this.$i18n) {
-          this.$i18n.locale = currentLocale;
+          this.$i18n.setLocale(currentLocale)
         }
-      },
-    };
-  },
-];
+      }
+    }
+  }
+]
