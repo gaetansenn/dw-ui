@@ -1,5 +1,5 @@
 <template>
-  <ul :class="[config.fixed, config.classes]">
+  <ul :class="[config.fixed, config.classes]" :style="config.style">
     <DwTabsNavItem v-for="(tab, index) in tabs" :key="index" :current-name="currentName" :tab="tab" @click.native="$emit('change', tab.name)" />
   </ul>
 </template>
