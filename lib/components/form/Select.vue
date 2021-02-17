@@ -79,6 +79,7 @@ export default {
       },
       on: {
         input: (event) => {
+          this.$emit('change', event.target.value)
           this.$emit('input', event.target.value)
         }
       },
