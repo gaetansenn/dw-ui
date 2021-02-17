@@ -1,7 +1,6 @@
 
 <script>
 import config from '../../config.mixin'
-
 import ToProps from '../../to.props'
 
 export default {
@@ -52,7 +51,7 @@ export default {
   },
   methods: {
     select () {
-      this.steps.select(this.index + 1)
+      if (!this.disabled) this.steps.select(this.index + 1)
     }
   },
   render (h) {
@@ -87,8 +86,11 @@ export default {
       class: [this.config.fixed, this.config.classes]
     }
 
-    if (this.is === 'nuxt-link') parentOptions.nativeOn = { click: this.select }
-    else parentOptions.on = { click: this.select }
+    if (this.is === 'nuxt-link') {
+      if (this.disabled) parentOptions.props.event = ''
+      else parentOptions.props.event = 'click'
+      parentOptions.nativeOn = { click: this.select }
+    } else parentOptions.on = { click: this.select }
 
     return h(this.is, parentOptions, childrens)
   }
