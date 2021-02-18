@@ -3,4 +3,4 @@ Dewib ui is an open source ui library for developing HTML/CSS and JS websites. T
 
 ## Install
 
-The library overide default tailwind config so if you have already added `require('@tailwindcss/custom-forms')` plugin with tailwind please remove it.
+The library override default tailwind config so if you have already added `require('@tailwindcss/custom-forms')` plugin with tailwind please remove it.
