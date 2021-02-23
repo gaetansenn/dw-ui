@@ -26,7 +26,7 @@
                   <button
                     v-if="closeButton"
                     :class="config.modal.header.icon.fixed"
-                    aria-label="close"
+                    :aria-label="translate('Modal.modal.header.icon.ariaLabel')"
                     @click.prevent="open = false"
                     v-html="config.modal.header.icon.icon"
                   />
@@ -46,11 +46,12 @@
 
 <script>
 import config from '../config.mixin'
+import i18n from '../utils/i18n'
 
 export default {
   configPath: 'Modal',
   name: 'DwModal',
-  mixins: [config],
+  mixins: [config, i18n],
   props: {
     title: {
       type: String,

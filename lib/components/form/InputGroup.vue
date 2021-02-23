@@ -13,7 +13,7 @@
       <p v-if="validation" :id="`${name}-error`" :class="[config.wrapper.validation.fixed, config.wrapper.validation.classes]">
         {{ validation.description }}
       </p>
-      <p v-else-if="help" :class="[config.wrapper.help.fixed, config.wrapper.help.size]">
+      <p v-else-if="help" :id="`${name}-hint`" :class="[config.wrapper.help.fixed, config.wrapper.help.size]">
         {{ help }}
       </p>
     </div>

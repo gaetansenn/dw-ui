@@ -62,14 +62,20 @@ export default {
     }
   },
   render (h) {
+    const attrs = {
+      type: this.type,
+      ...this.bind,
+      id: this.name,
+      'aria-required': this.required.toString(),
+      'aria-invalid': this.validation && this.validation.type === 'error'
+    }
+
+    if (this.$parent.help) attrs.describedby = `${this.name}-hint`
+
     const childrens = [h('input', {
       ref: 'component',
       class: [this.config.Input.fixed, this.config.Input.variant, this.config.Input.size, this.config.Input.validation, this.config.Input.rounded],
-      attrs: {
-        type: this.type,
-        ...this.bind,
-        id: this.name
-      },
+      attrs,
       domProps: {
         value: this.value,
         checked: this.checked
