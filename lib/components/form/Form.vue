@@ -17,6 +17,11 @@ export default {
     submit: {
       type: Function,
       required: true
+    },
+    /** Fields to validate */
+    fields: {
+      type: Array,
+      default: undefined
     }
   },
   methods: {
@@ -28,7 +33,7 @@ export default {
         return accu
       }, {})
 
-      const validate = this.validate()
+      const validate = this.validate(this.fields ? 'fields' : 'form')
 
       if (validate) this.submit()
     }
