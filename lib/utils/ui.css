@@ -1,0 +1,9 @@
+/* Chrome, Safari and Opera */
+.dw-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.dw-no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
