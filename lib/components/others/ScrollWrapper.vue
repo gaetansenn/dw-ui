@@ -6,7 +6,7 @@
       </div>
     </slot>
     <div ref="content" :class="config.fixed">
-      <slot :scrollToIndex="scrollToIndex" />
+      <slot name="default" />
     </div>
     <slot v-if="index < positions.length - 1" name="next" :next="next">
       <div :class="config.navigation.next.wrapper" @click="next">
@@ -36,9 +36,9 @@ export default {
   },
   mounted () {
     const parentWidth = this.$el.offsetWidth
-    this.positions = this.$children.map(children => ({
-      offset: children.$el.offsetLeft,
-      width: children.$el.offsetWidth
+    this.positions = this.$slots.default.map(children => ({
+      offset: children.elm.offsetLeft,
+      width: children.elm.offsetWidth
     })).reduce((accu, item, index, origin) => {
       accu.push({
         from: item.offset,
