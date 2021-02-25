@@ -35,6 +35,9 @@ export default {
     }
   },
   mounted () {
+    // Disable if not scrollable
+    if (this.$refs.content.offsetWidth === this.$refs.content.scrollWidth) return
+
     const parentWidth = this.$el.offsetWidth
     this.positions = this.$slots.default.map(children => ({
       offset: children.elm.offsetLeft,
@@ -63,6 +66,8 @@ export default {
   },
   methods: {
     scrollToIndex (index) {
+      if (this.positions.length - 1 < index) return
+
       this.$refs.content.scrollTo({
         left: index > this.positions.length - 1 ? this.positions[this.positions.length - 1].to + 10000 : this.positions[index].from,
         behavior: 'smooth'
