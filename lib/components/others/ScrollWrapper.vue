@@ -34,6 +34,7 @@ export default {
       positions: [],
       scrollable: false,
       scrollPosition: 0,
+      scrollStart: 0,
       scrollMax: 0,
       parentWidth: 0
     }
@@ -57,6 +58,8 @@ export default {
 
       return accu
     }, []).filter(item => item.to <= this.parentWidth)
+
+    this.scrollStart = this.positions[0].from
 
     // Scroll to index
     if (this.index) this.$el.scrollTo(this.index)
