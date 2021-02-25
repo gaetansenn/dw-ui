@@ -88,7 +88,7 @@ export default {
       return true
     },
     prev () {
-      this.scrollToIndex(this.index - 1)
+      this.scrollToIndex(this.index ? this.index - 1 : 0)
     },
     next () {
       this.scrollToIndex(this.index + 1)
