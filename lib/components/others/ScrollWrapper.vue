@@ -8,7 +8,7 @@
     <div ref="content" :class="config.fixed" @scroll="onScroll">
       <slot name="default" />
     </div>
-    <slot v-if="scrollPosition !== scrollMax" name="next" :next="next">
+    <slot v-if="scrollPosition < scrollMax" name="next" :next="next">
       <div :class="config.navigation.next.wrapper" @click="next">
         <div :class="config.navigation.next.fixed" v-html="config.navigation.next.icon" />
       </div>
@@ -47,6 +47,7 @@ export default {
 
     this.scrollMax = this.$refs.content.scrollWidth - this.$refs.content.clientWidth
     this.parentWidth = this.$refs.content.offsetWidth
+
     this.positions = this.$slots.default.map(children => ({
       offset: children.elm.offsetLeft,
       width: children.elm.offsetWidth
@@ -57,7 +58,7 @@ export default {
       })
 
       return accu
-    }, []).filter(item => item.to <= this.parentWidth)
+    }, []).filter(item => item.from <= this.scrollMax)
 
     this.scrollStart = this.positions[0].from
 
