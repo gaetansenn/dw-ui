@@ -81,7 +81,7 @@ export default {
 
       this.$nextTick(() => {
         this.$refs.content.scrollTo({
-          left: index > this.positions.length - 1 ? this.positions[this.positions.length - 1].to + 10000 : this.positions[index].from,
+          left: index > this.positions.length - 1 ? this.scrollMax : this.positions[index].from,
           behavior: 'smooth'
         })
       })
