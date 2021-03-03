@@ -6,7 +6,7 @@
       </slot>
     </div>
     <div v-if="more" :class="config.action" @click="toggle">
-      <slot :opened="opened" name="more">
+      <slot :opened="opened" :seeMoreLabel="seeMoreLabel" :seeLessLabel="seeLessLabel" name="more">
         {{ opened ? seeLessLabel : seeMoreLabel }}
       </slot>
     </div>
