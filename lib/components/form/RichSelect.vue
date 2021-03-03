@@ -1,59 +1,61 @@
 <template>
-  <DwInputGroup v-bind="inputGroupProps">
-    <div
-      v-click-away="{
-        exclude: [],
-        handler: 'close'
-      }"
-      :class="[config.wrapper]"
-    >
-      <div>
-        <button ref="button" :disabled="disabled" :class="[config.button.fixed, config.button.classes, config.button.size]" @click="toggle">
-          <slot v-if="loading" name="loading">
-            <div class="flex items-center">
-              <div :class="config.loading.fixed" v-html="config.loading.icon" />
-              <div class="text-sm ml-2">
-                {{ localLoadingLabel }}
-              </div>
-            </div>
-          </slot>
-          <slot v-else name="label" :value="localPlaceholder" :option="localOption ? localOption.original : false">
-            <span>{{ localPlaceholder }}</span>
-          </slot>
-        </button>
-      </div>
-      <transition
-        enter-class="transform opacity-0 scale-95"
-        enter-active-class="transition ease-out duration-100"
-        enter-to-class="transform opacity-100 scale-100"
-        leave-class="transform opacity-100 scale-100"
-        leave-active-class="transition ease-in duration-75"
-        leave-to-class="transform opacity-0 scale-95"
+  <div>
+    <DwInputGroup v-bind="inputGroupProps">
+      <div
+        v-click-away="{
+          exclude: [],
+          handler: 'close'
+        }"
+        :class="[config.wrapper]"
       >
-        <!-- Replace style attribute with tailwind plugin to overide default theme or wait for tailwind 2.0 upgrade -->
-        <ul
-          v-if="opened"
-          ref="options"
-          :class="[config.options]"
-          style="max-height: 15rem;"
+        <div>
+          <button ref="button" :disabled="disabled" :class="[config.button.fixed, config.button.classes, config.button.size]" @click="toggle">
+            <slot v-if="loading" name="loading">
+              <div class="flex items-center">
+                <div :class="config.loading.fixed" v-html="config.loading.icon" />
+                <div class="text-sm ml-2">
+                  {{ localLoadingLabel }}
+                </div>
+              </div>
+            </slot>
+            <slot v-else name="label" :value="localPlaceholder" :option="localOption ? localOption.original : false">
+              <span>{{ localPlaceholder }}</span>
+            </slot>
+          </button>
+        </div>
+        <transition
+          enter-class="transform opacity-0 scale-95"
+          enter-active-class="transition ease-out duration-100"
+          enter-to-class="transform opacity-100 scale-100"
+          leave-class="transform opacity-100 scale-100"
+          leave-active-class="transition ease-in duration-75"
+          leave-to-class="transform opacity-0 scale-95"
         >
-          <template>
-            <li
-              v-for="(option, i) in localOptions"
-              :key="i"
-              :ref="`option-${i}`"
-              :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }, option.disabled ? config.option.disabled : config.option.active]"
-              @click.stop="toggleOption(option, i)"
-            >
-              <slot :option="option.original" :selected="selectedIndex === i" name="option">
-                <span>{{ option.label }}</span>
-              </slot>
-            </li>
-          </template>
-        </ul>
-      </transition>
-    </div>
-  </DwInputGroup>
+          <!-- Replace style attribute with tailwind plugin to overide default theme or wait for tailwind 2.0 upgrade -->
+          <ul
+            v-if="opened"
+            ref="options"
+            :class="[config.options]"
+            style="max-height: 15rem;"
+          >
+            <template>
+              <li
+                v-for="(option, i) in localOptions"
+                :key="i"
+                :ref="`option-${i}`"
+                :class="[config.option.fixed, config.option.size, { [`${config.option.selected}`]: selectedIndex === i }, option.disabled ? config.option.disabled : config.option.active]"
+                @click.stop="toggleOption(option, i)"
+              >
+                <slot :option="option.original" :selected="selectedIndex === i" name="option">
+                  <span>{{ option.label }}</span>
+                </slot>
+              </li>
+            </template>
+          </ul>
+        </transition>
+      </div>
+    </DwInputGroup>
+  </div>
 </template>
 
 <script>
@@ -117,8 +119,8 @@ export default {
       })
     },
     /**
-     * Used to display the current selected item or default placeholder
-     */
+      * Used to display the current selected item or default placeholder
+      */
     localPlaceholder () {
       return (this.localOption && this.localOption.label) ? this.localOption.label : (this.placeholder || this.config.placeholder)
     },
@@ -131,8 +133,8 @@ export default {
       })
     },
     /**
-     * Selected active index
-     */
+      * Selected active index
+      */
     selectedIndex () {
       if (!this.localOption) return -1
 
@@ -153,8 +155,8 @@ export default {
       this.$emit('input', newValue)
     },
     /**
-     * Click on select to open or close
-     */
+      * Click on select to open or close
+      */
     toggle () {
       if (this.disabled) return
 
@@ -177,8 +179,8 @@ export default {
       return this.selectOption(item, index)
     },
     /**
-     * Update current v-model value
-     */
+      * Update current v-model value
+      */
     selectOption (item, index) {
       this.index = index
 
@@ -202,3 +204,5 @@ export default {
   }
 }
 </script>
+  </div>
+</template></div>
