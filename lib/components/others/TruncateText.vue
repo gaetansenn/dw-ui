@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="config.wrapper">
     <div ref="text" :class="config.fixed" class="dw-truncate-text" :style="!opened ? `-webkit-line-clamp: ${lines}`: ''">
       <slot>
         {{ text }}
