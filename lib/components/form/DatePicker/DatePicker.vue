@@ -8,15 +8,23 @@
         </div>
       </div>
       <div :class="config.header.navigation.fixed">
-        <button :class="config.header.navigation.button" @click.stop="prevMonth">
+        <button :class="config.header.navigation.button" :disabled="loading" @click.stop="prevMonth">
           <div :class="config.header.navigation.icon.fixed" v-html="config.header.navigation.icon.left" />
         </button>
-        <button :class="config.header.navigation.button" @click.stop="nextMonth">
+        <button :class="config.header.navigation.button" :disabled="loading" @click.stop="nextMonth">
           <div :class="config.header.navigation.icon.fixed" v-html="config.header.navigation.icon.right" />
         </button>
       </div>
     </div>
-    <div>
+    <slot v-if="loading" name="loading">
+      <div :class="config.loading.wrapper">
+        <div :class="config.loading.fixed" v-html="config.loading.icon" />
+        <div :class="config.loading.label">
+          {{ localLoadingLabel }}
+        </div>
+      </div>
+    </slot>
+    <div v-else>
       <div :class="config.weekDays.wrapper">
         <div v-for="day in weekDays" :key="day" :class="config.weekDays.day.wrapper">
           <div :class="config.weekDays.day.fixed">
@@ -65,6 +73,10 @@ export default {
     }
   },
   computed: {
+    /** Label to display during loading */
+    localLoadingLabel () {
+      return this.loadingLabel || this.translate('DatePicker.loading')
+    },
     firstDayOfCurrentMonth () {
       return new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1)
     },
