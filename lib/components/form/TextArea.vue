@@ -5,13 +5,13 @@
         ref="input"
         :value="value"
         v-bind="inputProps"
-        :class="[config.fixed, config.Input.validation, config.Input.rounded]"
+        :class="[config.fixed, config.Input.validation, config.Input.rounded, config.remaining.input]"
         :maxlength="maxlength"
         @input="(event) => $emit('input', event.target.value)"
         @focus="onFocus"
         @blur="onBlur"
       />
-      <div v-if="remaining && maxlength" :class="config.remaining">
+      <div v-if="displayRemaining" :class="config.remaining.fixed">
         {{ translate('TextArea.remaining', [remainingCharacters]) }}
       </div>
     </div>
@@ -49,6 +49,9 @@ export default {
     ...RoundedProps
   },
   computed: {
+    displayRemaining () {
+      return this.remaining && this.maxlength
+    },
     remainingCharacters () {
       if (!this.value) return this.maxlength
 
@@ -64,7 +67,7 @@ export default {
     },
     inputProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
+        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps, ...TextAreaProps })),
         validation: this.localValidation,
         configPath: 'InputText'
       }
