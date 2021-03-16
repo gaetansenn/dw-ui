@@ -1,6 +1,6 @@
 <template>
   <DwInputGroup v-bind="inputGroupProps">
-    <div class="relative">
+    <div :class="config.wrapper">
       <textarea
         ref="input"
         :value="value"
@@ -11,8 +11,8 @@
         @focus="onFocus"
         @blur="onBlur"
       />
-      <div v-if="remaining" class="absolute bottom-0 right-0 text-sm text-gray-500 p-3">
-        {{ remainingCharacters }} remaining characters
+      <div v-if="remaining && maxlength" :class="config.remaining">
+        {{ translate('TextArea.remaining', [remainingCharacters]) }}
       </div>
     </div>
   </DwInputGroup>
