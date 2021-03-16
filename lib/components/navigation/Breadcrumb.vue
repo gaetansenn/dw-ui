@@ -1,5 +1,5 @@
 <template>
-  <div :class="config.wrapper">
+  <component :is="attribute" :class="config.wrapper">
     <div v-for="(item, index) in newItems" :key="index" :class="index === newItems.length - 1 ? config.item.active : config.item.class">
       <div v-if="item.separator" :class="config.item.separator">
         <div v-html="config.separator" />
@@ -8,7 +8,7 @@
         {{ item.label }}
       </component>
     </div>
-  </div>
+  </component>
 </template>
 
 <script>
