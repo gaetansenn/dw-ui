@@ -1,19 +1,17 @@
 <template>
   <DwInputGroup v-bind="inputGroupProps">
-    <div :class="config.wrapper">
-      <textarea
-        ref="input"
-        :value="value"
-        v-bind="inputProps"
-        :class="[config.fixed, config.Input.validation, config.Input.rounded, config.remaining.input]"
-        :maxlength="maxlength"
-        @input="(event) => $emit('input', event.target.value)"
-        @focus="onFocus"
-        @blur="onBlur"
-      />
-      <div v-if="displayRemaining" :class="config.remaining.fixed">
-        {{ translate('TextArea.remaining', [remainingCharacters]) }}
-      </div>
+    <textarea
+      ref="input"
+      :value="value"
+      v-bind="inputProps"
+      :class="[config.fixed, config.Input.validation, config.Input.size, config.Input.rounded, config.remaining.input]"
+      :maxlength="maxlength"
+      @input="(event) => $emit('input', event.target.value)"
+      @focus="onFocus"
+      @blur="onBlur"
+    />
+    <div v-if="displayRemaining && !localValidation" :class="config.remaining">
+      {{ translate('TextArea.remaining', [remainingCharacters]) }}
     </div>
   </DwInputGroup>
 </template>
