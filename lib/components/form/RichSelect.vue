@@ -9,7 +9,7 @@
         :class="[config.wrapper]"
       >
         <div>
-          <button ref="button" :disabled="disabled" :class="[config.button.fixed, config.button.classes, config.button.size]" @click="toggle">
+          <button ref="button" type="button" :disabled="disabled" :class="[config.button.fixed, config.button.classes, config.button.size]" @click="toggle">
             <slot v-if="loading" name="loading">
               <div :class="config.loading.wrapper">
                 <div :class="config.loading.fixed" v-html="config.loading.icon" />
