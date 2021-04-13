@@ -7,7 +7,7 @@
     >
       <div :class="config.wrapper">
         <div :class="config.backdrop.wrapper">
-          <div :class="config.backdrop.fixed" @click="open = false" />
+          <div :class="config.backdrop.fixed" @click="close" />
         </div>
         <DwConfigTransition appear :config="config.modal.transition">
           <div v-show="open" :class="config.modal.wrapper">
@@ -27,7 +27,7 @@
                     v-if="closeButton"
                     :class="config.modal.header.icon.fixed"
                     :aria-label="translate('Modal.modal.header.icon.ariaLabel')"
-                    @click.prevent="open = false"
+                    @click.prevent="close"
                     v-html="config.modal.header.icon.icon"
                   />
                 </slot>
@@ -56,6 +56,13 @@ export default {
     title: {
       type: String,
       default: null
+    },
+    /**
+     * Prevent modal to be closed
+     */
+    preventClose: {
+      type: Boolean,
+      default: false
     },
     /**
      * Display close button
@@ -88,6 +95,11 @@ export default {
 
         this.$emit('input', open)
       }
+    }
+  },
+  methods: {
+    close () {
+      if (!this.preventClose) this.open = false
     }
   }
 }

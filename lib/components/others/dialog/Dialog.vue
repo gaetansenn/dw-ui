@@ -4,6 +4,7 @@
     root-path="Dialog"
     :close-button="false"
     :title="title"
+    :prevent-close="!cancel"
     @close="onCancel"
   >
     <div v-html="body" />
