@@ -1,9 +1,9 @@
 <template>
   <li :class="config.fixed">
-    <div :class="[config.wrapper.fixed, config.wrapper.classes]">
+    <component :is="tab.attribute" :class="[config.wrapper.fixed, config.wrapper.classes]">
       {{ tab.label }}
       <div :class="[config.border.fixed, config.border.classes]" />
-    </div>
+    </component>
   </li>
 </template>
 

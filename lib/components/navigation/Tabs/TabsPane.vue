@@ -6,8 +6,12 @@
 
 <script>
 export default {
-  name: 'DwTabPane',
+  name: 'DwTabsPane',
   props: {
+    attribute: {
+      type: String,
+      default: 'div'
+    },
     name: {
       type: String,
       required: true

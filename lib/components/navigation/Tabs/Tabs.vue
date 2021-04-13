@@ -22,11 +22,12 @@ export default {
   created () {
     if (this.$slots.default) {
       const paneSlots = this.$slots.default.filter(vnode => vnode.tag &&
-            vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'DwTabPane')
+            vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'DwTabsPane')
 
       this.tabs = paneSlots.map(slot => ({
         label: slot.componentOptions.propsData.label,
-        name: slot.componentOptions.propsData.name
+        name: slot.componentOptions.propsData.name,
+        attribute: slot.componentOptions.propsData.attribute || slot.componentOptions.Ctor.options.props.attribute.default
       }))
     }
   },
