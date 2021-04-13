@@ -9,6 +9,7 @@
     <div v-html="body" />
     <template slot="footer">
       <DwButton
+        v-if="submit"
         :focus="opened"
         :loading="ongoing.submit"
         :disabled="ongoing.cancel || ongoing.submit"
@@ -20,6 +21,7 @@
         {{ submit }}
       </DwButton>
       <DwButton
+        v-if="cancel"
         :variant="config.button.cancel.variant"
         :disabled="ongoing.cancel || ongoing.submit"
         :class="config.button.cancel.fixed"
