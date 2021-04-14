@@ -20,7 +20,9 @@
           :title="title"
         >
           <div :class="config.header.title">
-            {{ title }}
+            <slot name="titleContent" :title="title">
+              {{ title }}
+            </slot>
           </div>
           <div v-if="!noIcon" :class="[config.header.icon.fixed, config.header.icon.classes]" v-html="config.header.icon.icon" />
         </slot>
