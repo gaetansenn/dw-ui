@@ -45,10 +45,10 @@ export default {
     },
     isTrailing () {
       return (this.icon && this.trailing) || this.helpTooltip
+    },
+    bind () {
+      return bindProps.call(this, InputProps)
     }
-  },
-  created () {
-    this.bind = bindProps.call(this, InputProps)
   },
   methods: {
     focus () {
