@@ -19,6 +19,9 @@ export default {
       currentName: this.value
     }
   },
+  watch: {
+    value: 'onValueChanged'
+  },
   created () {
     if (this.$slots.default) {
       const paneSlots = this.$slots.default.filter(vnode => vnode.tag &&
@@ -32,6 +35,9 @@ export default {
     }
   },
   methods: {
+    onValueChanged () {
+      this.currentName = this.value
+    },
     tabChange (tab) {
       this.currentName = tab
       this.$emit('input', tab)
