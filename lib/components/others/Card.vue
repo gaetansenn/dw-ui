@@ -76,7 +76,7 @@ export default {
 
       if (this.$scopedSlots.header) headerChildrens.push(this.$scopedSlots.header({ opened: this.opened }))
       else headerChildrens.push(this.header)
-      if (this.collapse) headerChildrens.push(h('div', {
+      if (this.collapse && this.arrow) headerChildrens.push(h('div', {
         class: [this.config.header.icon.fixed, this.config.header.icon.classes],
         domProps: { innerHTML: this.config.header.icon.icon }
       }))
