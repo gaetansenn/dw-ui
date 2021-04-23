@@ -29,7 +29,7 @@ import FormProps from './Form.props'
 
 export function validate () {
   // eslint-disable-next-line
-  const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[ !"#$%&'()*+,-.\/:;<=>?@[\]^_`{|}~])[A-Za-z\d !"#$%&'()*+,-.\/:;<=>?@[\]^_`{|}~]{8,}$/
+  const regex = /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!='(),-.\/:;<>?[\]_`{|}~]).*$/
 
   const test = regex.test(this.value)
 
