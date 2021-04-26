@@ -87,6 +87,7 @@ export default {
 
       if (this.collapse) header.on = {
         click: () => {
+          this.$emit('toggle', !this.opened)
           this.opened = !this.opened
         }
       }
