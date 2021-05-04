@@ -61,15 +61,16 @@ export default {
     ...DatePickerProps
   },
   data () {
-    let localValue = this.value ? new Date(this.value) : new Date()
+    let localValue = this.value ? new Date(this.value) : undefined
+    const initialDate = this.initialDate ? new Date(this.initialDate) : false
 
     // If date is invalid set date to today
-    if (localValue.toString() === 'Invalid Date') localValue = new Date()
+    if (localValue && localValue.toString() === 'Invalid Date') localValue = new Date()
 
     return {
       localValue,
       today: this.getBeginingOfDay(new Date()),
-      currentDate: this.getBeginingOfDay(localValue)
+      currentDate: this.getBeginingOfDay(initialDate || localValue || new Date())
     }
   },
   computed: {
@@ -109,13 +110,15 @@ export default {
       // we set a index 0
       currentDate.setDate(currentDate.getDate() - (decIndex + 1))
 
+      const currentValue = this.localValue ? new Date(this.localValue.getFullYear(), this.localValue.getMonth(), this.localValue.getDate()) : false
+
       return days.map((day) => {
         const date = new Date(currentDate.setDate(currentDate.getDate() + 1))
 
         return {
           date,
           today: date.getTime() === this.today.getTime(),
-          selected: this.localValue && date.getTime() === this.localValue.getTime(),
+          selected: currentValue && date.getTime() === currentValue.getTime(),
           disabled: this.isDateDisabled(date, this.disabledDates),
           current: date.getMonth() === this.currentDate.getMonth()// Is current month
         }
