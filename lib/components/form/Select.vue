@@ -83,7 +83,7 @@ export default {
           this.$emit('input', event.target.value)
         }
       },
-      class: [this.config.fixed, this.config.size, this.config.variant, this.config.rounded]
+      class: [this.config.fixed, this.config.size, this.config.variant, this.config.rounded, this.config.validation]
     }, selectChildrens)
 
     return h('DwInputGroup', {
