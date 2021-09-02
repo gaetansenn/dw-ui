@@ -1,12 +1,13 @@
 {
   "name": "@dewib/dw-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Dewib ui is an open source ui library for developing HTML/CSS and JS websites. This package is developed with Vue.js and tailwindcss and to use with NuxtJS",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook:build": "yarn nuxt storybook build",
-    "storybook": "yarn nuxt storybook"
+    "storybook": "yarn nuxt storybook",
+    "release": "standard-version && git push --follow-tags && npm publish --access public"
   },
   "repository": {
     "type": "git",
