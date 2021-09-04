@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/gaetansenn/dw-ui/compare/v2.0.0...v2.1.0) (2021-09-04)
+
+
+### Features
+
+* handle custom color for each icons Input ([09b3e20](https://github.com/gaetansenn/dw-ui/commit/09b3e20ef155e34ac98d544ba14617b9cbd017d6))
+
 ## [2.0.0](https://github.com/gaetansenn/dw-ui/compare/v1.1.0...v2.0.0) (2021-09-04)
 
 
