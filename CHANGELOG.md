@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/gaetansenn/dw-ui/compare/v1.1.0...v2.0.0) (2021-09-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* handle two icons for Input
+
+### Features
+
+* handle two icons for Input ([c58b30b](https://github.com/gaetansenn/dw-ui/commit/c58b30b7a406d110cb9f18515c33764f717e1622))
+
 ## 1.1.0 (2021-09-02)
 
 
