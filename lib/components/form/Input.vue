@@ -104,7 +104,7 @@ export default {
       })
 
       const trailingWrapper = {
-        class: [this.config.Input.trailing.fixed, this.config.Input.trailing.classes],
+        class: [this.config.Input.icon.trailing.fixed, this.config.Input.icon.trailing.classes],
         on: {
           click: () => {
             this.$emit('trailing-click')
@@ -132,7 +132,7 @@ export default {
       })
 
       const leadingWrapper = {
-        class: [this.config.Input.leading.fixed, this.config.Input.leading.classes],
+        class: [this.config.Input.icon.leading.fixed, this.config.Input.icon.leading.classes],
         on: {
           click: () => {
             this.$emit('leading-click')
