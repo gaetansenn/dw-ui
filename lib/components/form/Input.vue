@@ -40,12 +40,6 @@ export default {
     }
   },
   computed: {
-    isLeading () {
-      return this.icon && this.leading
-    },
-    isTrailing () {
-      return (this.icon && this.trailing) || this.helpTooltip
-    },
     bind () {
       return bindProps.call(this, InputProps)
     }
@@ -74,7 +68,7 @@ export default {
 
     const childrens = [h('input', {
       ref: 'component',
-      class: [this.config.Input.fixed, this.config.Input.variant, this.config.Input.size, this.config.Input.validation, this.config.Input.rounded],
+      class: [this.config.Input.fixed, this.config.Input.classes, this.config.Input.variant, this.config.Input.size, this.config.Input.validation, this.config.Input.rounded],
       attrs,
       domProps: {
         value: this.value,
@@ -101,11 +95,11 @@ export default {
       }
     })]
 
-    if (this.isTrailing) {
+    if (this.trailing || this.helpTooltip) {
       const icon = h('div', {
         class: [this.config.Input.icon.fixed, this.config.Input.icon.size],
         domProps: {
-          innerHTML: this.icon || this.config.Input.help.icon
+          innerHTML: this.trailing || this.config.Input.help.icon
         }
       })
 
@@ -127,6 +121,26 @@ export default {
         }, [icon])]))
       else
         childrens.push(h('div', trailingWrapper, [icon]))
+    }
+
+    if (this.leading) {
+      const icon = h('div', {
+        class: [this.config.Input.icon.fixed, this.config.Input.icon.size],
+        domProps: {
+          innerHTML: this.leading
+        }
+      })
+
+      const leadingWrapper = {
+        class: [this.config.Input.leading.fixed, this.config.Input.leading.classes],
+        on: {
+          click: () => {
+            this.$emit('leading-click')
+          }
+        }
+      }
+
+      childrens.push(h('div', leadingWrapper, [icon]))
     }
 
     return h('div', {

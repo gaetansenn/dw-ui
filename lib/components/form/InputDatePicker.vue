@@ -12,8 +12,7 @@
         v-bind="inputProps"
         type="text"
         readonly
-        trailing
-        :icon="config.icon.icon"
+        :trailing="config.icon.icon"
         @click.native="toggle"
         @focus="onFocus"
         @blur="onBlur"

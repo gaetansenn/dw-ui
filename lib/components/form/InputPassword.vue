@@ -78,8 +78,7 @@ export default {
 
       // Inject show password icon
       if (this.eye) {
-        inputProps.trailing = true
-        inputProps.icon = this.config.icon[`${this.showPassword ? 'show' : 'hide'}`]
+        inputProps.trailing = this.config.icon[`${this.showPassword ? 'show' : 'hide'}`]
         inputProps.iconClasses = [this.config.icon.fixed, 'cursor-pointer'].filter(icon => !!icon).join(' ')
       }
 
