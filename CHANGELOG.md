@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/gaetansenn/dw-ui/compare/v2.1.0...v2.2.0) (2021-10-12)
+
+
+### Features
+
+* add maxlength prop for input ([c42f9c0](https://github.com/gaetansenn/dw-ui/commit/c42f9c057a07cc79090b60a9cb3c56a9355a0d3b))
+
 ## [2.1.0](https://github.com/gaetansenn/dw-ui/compare/v2.0.0...v2.1.0) (2021-09-04)
 
 
