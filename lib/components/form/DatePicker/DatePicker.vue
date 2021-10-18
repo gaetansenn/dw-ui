@@ -8,10 +8,10 @@
         </div>
       </div>
       <div :class="config.header.navigation.fixed">
-        <button :class="config.header.navigation.button" :disabled="loading" @click.stop="prevMonth">
+        <button type="button" :class="config.header.navigation.button" :disabled="loading" @click.stop="prevMonth">
           <div :class="config.header.navigation.icon.fixed" v-html="config.header.navigation.icon.left" />
         </button>
-        <button :class="config.header.navigation.button" :disabled="loading" @click.stop="nextMonth">
+        <button type="button" :class="config.header.navigation.button" :disabled="loading" @click.stop="nextMonth">
           <div :class="config.header.navigation.icon.fixed" v-html="config.header.navigation.icon.right" />
         </button>
       </div>
