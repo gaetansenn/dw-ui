@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/gaetansenn/dw-ui/compare/v2.2.0...v2.2.1) (2021-10-20)
+
+
+### Bug Fixes
+
+* **datepicker:** add navigation arrow button type ([3e2bb22](https://github.com/gaetansenn/dw-ui/commit/3e2bb2228567b370b2a61229d6bfdb4f645b1c70))
+
 ## [2.2.0](https://github.com/gaetansenn/dw-ui/compare/v2.1.0...v2.2.0) (2021-10-12)
 
 
