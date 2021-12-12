@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.2](https://github.com/gaetansenn/dw-ui/compare/v2.2.1...v2.2.2) (2021-12-12)
+
+
+### Bug Fixes
+
+* **form:** fix prop value type for inputGroup ([5814e0a](https://github.com/gaetansenn/dw-ui/commit/5814e0a8bf2ec95773b4b0b663f800167ca06490))
+
 ### [2.2.1](https://github.com/gaetansenn/dw-ui/compare/v2.2.0...v2.2.1) (2021-10-20)
 
 
