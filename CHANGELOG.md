@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/gaetansenn/dw-ui/compare/v3.0.0...v3.1.0) (2021-12-13)
+
+
+### Features
+
+* allow tailwindcss-forms custom plugin ([a6f559d](https://github.com/gaetansenn/dw-ui/commit/a6f559db7cf56ece2346b0529f6ad6de2cdf4e45))
+
 ## [3.0.0](https://github.com/gaetansenn/dw-ui/compare/v2.2.2...v3.0.0) (2021-12-13)
 
 
