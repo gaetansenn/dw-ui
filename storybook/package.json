@@ -10,10 +10,9 @@
   "dependencies": {
     "@dewib/dw-ui": "https://github.com/gaetansenn/dw-ui",
     "@nuxtjs/storybook": "^3.3.0",
-    "@nuxtjs/tailwindcss": "^3.0.2",
-    "nuxt": "2.15.0",
-    "@nuxt/components": "2.1.1",
-    "nuxt-edge": "^2.15.0-26788356.847d4ae0",
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "@tailwindcss/forms": "0.4.0",
+    "nuxt": "2.15.7",
     "nuxt-i18n": "^6.16.0"
   },
   "devDependencies": {

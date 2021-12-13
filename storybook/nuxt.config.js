@@ -19,5 +19,12 @@ export default {
         fr: {}
       }
     }
+  },
+  build: {
+    babel: {
+      // Prevents looping in console while building
+      // https://github.com/nuxt/nuxt.js/issues/9224#issuecomment-893263501
+      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }], ['@babel/plugin-proposal-private-property-in-object', { loose: true }]]
+    }
   }
 }

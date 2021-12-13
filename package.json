@@ -28,8 +28,8 @@
   "homepage": "https://github.com/gaetansenn/dw-ui#readme",
   "dependencies": {
     "@nuxtjs/storybook": "^3.3.0",
-    "@nuxtjs/tailwindcss": "^3.0.2",
-    "@tailwindcss/custom-forms": "^0.2.1",
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "@tailwindcss/forms": "^0.4.0",
     "consola": "^2.15.0",
     "defu": "^3.2.2",
     "vue-global-events": "^1.2.1"
