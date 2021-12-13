@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/gaetansenn/dw-ui/compare/v2.2.2...v3.0.0) (2021-12-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to nuxt tailwind v4
+
+* upgrade to nuxt tailwind v4 ([7a9563c](https://github.com/gaetansenn/dw-ui/commit/7a9563c9855e2af6ae498585bd8dd5fcd66ffd6e))
+
 ### [2.2.2](https://github.com/gaetansenn/dw-ui/compare/v2.2.1...v2.2.2) (2021-12-12)
 
 
