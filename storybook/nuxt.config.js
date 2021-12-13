@@ -1,8 +1,11 @@
 import module from '..'
+import customForm from './plugins/custom-form'
 
 export default {
   components: true,
-  buildModules: [module, '@nuxtjs/tailwindcss'],
+  buildModules: [[module, {
+    forms: customForm
+  }], '@nuxtjs/tailwindcss'],
   env: {
     storybook: true
   },
