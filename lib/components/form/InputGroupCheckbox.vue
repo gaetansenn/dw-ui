@@ -26,7 +26,8 @@ export default {
     inputGroupProps () {
       return {
         ...syncProps.call(this, Object.keys({ ...CommonsProps, ...SizeProps, ...InputGroupCheckboxProps, ...InputGroupProps })),
-        validation: this.localValidation
+        validation: this.localValidation,
+        rootPath: 'InputGroupCheckbox'
       }
     }
   },
