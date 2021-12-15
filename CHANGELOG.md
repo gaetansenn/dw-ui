@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/gaetansenn/dw-ui/compare/v3.1.0...v3.2.0) (2021-12-15)
+
+
+### Features
+
+* add inputTime component ([c8b05cb](https://github.com/gaetansenn/dw-ui/commit/c8b05cbb0bb907c3be35a6f4817250106709421a))
+* handle custom InputGroup in InputGroupProps ([1201f14](https://github.com/gaetansenn/dw-ui/commit/1201f14550be777295200762a9304e263824bc30))
+
 ## [3.1.0](https://github.com/gaetansenn/dw-ui/compare/v3.0.0...v3.1.0) (2021-12-13)
 
 
