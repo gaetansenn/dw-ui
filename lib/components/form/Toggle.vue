@@ -1,5 +1,5 @@
 <template>
-  <label :class="[config.wrapper.fixed, config.wrapper.classes]" tabindex="0">
+  <label :class="[config.wrapper.fixed, config.wrapper.classes, config.wrapper.size]" tabindex="0">
     <input type="checkbox" :class="config.input" :checked="checked" @click="toggle">
     <div :class="config.toggle.wrapper">
       <div :class="[config.toggle.fixed, config.toggle.classes]" />
@@ -9,6 +9,7 @@
 
 <script>
 import config from '../config.mixin'
+import SizeProps from '../size.props'
 
 export default {
   configPath: 'Toggle',
@@ -32,7 +33,8 @@ export default {
     uncheckedValue: {
       type: [String, Boolean],
       default: false
-    }
+    },
+    ...SizeProps
   },
   computed: {
     checked () {
