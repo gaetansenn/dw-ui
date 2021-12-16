@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/gaetansenn/dw-ui/compare/v3.2.0...v3.3.0) (2021-12-16)
+
+
+### Features
+
+* **form:** add sizes feature to Toggle ([2ce5979](https://github.com/gaetansenn/dw-ui/commit/2ce5979a9ee5e6a88a9de3735dbdc55fd62d6720))
+
 ## [3.2.0](https://github.com/gaetansenn/dw-ui/compare/v3.1.0...v3.2.0) (2021-12-15)
 
 
