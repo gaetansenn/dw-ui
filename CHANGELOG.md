@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/gaetansenn/dw-ui/compare/v3.3.1...v3.4.0) (2022-01-28)
+
+
+### Features
+
+* add autofocus attribute to inputs ([d0c7f53](https://github.com/gaetansenn/dw-ui/commit/d0c7f53d746e75d1c147d1da368628f0809e0285))
+
 ### [3.3.1](https://github.com/gaetansenn/dw-ui/compare/v3.3.0...v3.3.1) (2021-12-30)
 
 
