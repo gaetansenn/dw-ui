@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0](https://github.com/gaetansenn/dw-ui/compare/v3.5.0...v3.6.0) (2022-02-07)
+
+
+### Features
+
+* emit traling / leading click to inputs ([3a835e6](https://github.com/gaetansenn/dw-ui/commit/3a835e6ed9a31e82f3dbecad611e812bcf607d00))
+
 ## [3.5.0](https://github.com/gaetansenn/dw-ui/compare/v3.4.0...v3.5.0) (2022-02-02)
 
 
