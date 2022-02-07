@@ -5,7 +5,8 @@
       v-bind="inputProps"
       :type="showPassword ? 'text' : 'password'"
       @input="(value) => $emit('input', value)"
-      @trailing-click="showPassword = !showPassword"
+      @trailing-click="onTrailingClick"
+      @leading-click="$emit('leading-click')"
       @focus="onFocus"
       @blur="onBlur"
     />
@@ -86,6 +87,11 @@ export default {
     }
   },
   methods: {
+    onTrailingClick () {
+      this.showPassword = !this.showPassword
+
+      this.$emit('trailing-click')
+    },
     validate () {
       const defaultValidate = DEFAULT_VALIDATION.call(this)
 

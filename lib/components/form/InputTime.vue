@@ -5,6 +5,8 @@
       v-bind="inputProps"
       type="time"
       @input="(value) => $emit('input', value)"
+      @leading-click="$emit('leading-click')"
+      @trailing-click="$emit('trailing-click')"
       @focus="onFocus"
       @blur="onBlur"
     />
