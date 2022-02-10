@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.0](https://github.com/gaetansenn/dw-ui/compare/v3.6.0...v3.7.0) (2022-02-10)
+
+
+### Features
+
+* **config:** add xxs size ([3b164bb](https://github.com/gaetansenn/dw-ui/commit/3b164bbca0aad0a3340ed52dfdcff8948fe4e3af))
+
 ## [3.6.0](https://github.com/gaetansenn/dw-ui/compare/v3.5.0...v3.6.0) (2022-02-07)
 
 
