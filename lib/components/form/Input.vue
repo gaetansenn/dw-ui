@@ -60,7 +60,7 @@ export default {
       type: this.type,
       ...this.bind,
       id: this.name,
-      'aria-required': this.required.toString(),
+      'aria-required': (!!this.required).toString(),
       'aria-invalid': this.validation && this.validation.type === 'error'
     }
 
