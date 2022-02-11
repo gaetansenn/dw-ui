@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.8.0](https://github.com/gaetansenn/dw-ui/compare/v3.7.0...v3.8.0) (2022-02-11)
+
+
+### Features
+
+* add attribute type string to required ([e15d8fd](https://github.com/gaetansenn/dw-ui/commit/e15d8fde09f987a0fd65c58b3ca0a840a2a218d3))
+
 ## [3.7.0](https://github.com/gaetansenn/dw-ui/compare/v3.6.0...v3.7.0) (2022-02-10)
 
 
