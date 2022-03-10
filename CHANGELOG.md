@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.8.1](https://github.com/gaetansenn/dw-ui/compare/v3.8.0...v3.8.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* fix default empty option value ([d7068ef](https://github.com/gaetansenn/dw-ui/commit/d7068ef19a96ee985bd6dfcf79c607ae02966b5a))
+* fix render strict access this ([fc26a82](https://github.com/gaetansenn/dw-ui/commit/fc26a822c737893e33a9b1a63c25271da88cc29f))
+
 ## [3.8.0](https://github.com/gaetansenn/dw-ui/compare/v3.7.0...v3.8.0) (2022-02-11)
 
 
