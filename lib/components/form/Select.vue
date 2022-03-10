@@ -36,12 +36,6 @@ export default {
         if (typeof item === 'string' || typeof item === 'number') return { [this.valueKey]: item, [this.labelKey]: item }
         return item
       })
-    },
-    inputGroupProps () {
-      return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
-        validation: this.localValidation
-      }
     }
   },
   watch: {
@@ -50,6 +44,12 @@ export default {
   methods: {
     onLocalValueChanged (newValue) {
       this.$emit('input', newValue)
+    },
+    inputGroupProps () {
+      return {
+        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
+        validation: this.localValidation
+      }
     }
   },
   render (h) {
@@ -83,7 +83,7 @@ export default {
     }, selectChildrens)
 
     return h('DwInputGroup', {
-      attrs: this.inputGroupProps
+      attrs: this.inputGroupProps()
     }, [h('div', {
       class: this.config.wrapper
     }, [select, h('span', {
