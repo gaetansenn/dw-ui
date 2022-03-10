@@ -31,10 +31,6 @@ export default {
     ...FormProps
   },
   computed: {
-    emptyLocalValue () {
-      if (!this.localOptions.find(item => item[this.valueKey] === this.localValue)) return this.localValue
-      return ''
-    },
     localOptions () {
       return this.options.map((item) => {
         if (typeof item === 'string' || typeof item === 'number') return { [this.valueKey]: item, [this.labelKey]: item }
@@ -68,7 +64,7 @@ export default {
 
     if (this.placeholder !== false) selectChildrens.unshift(h('option', {
       domProps: {
-        value: this.emptyLocalValue
+        value: null
       }
     }, this.placeholder || this.config.placeholder))
 
