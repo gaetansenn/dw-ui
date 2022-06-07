@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.8.2](https://github.com/gaetansenn/dw-ui/compare/v3.8.1...v3.8.2) (2022-06-07)
+
+
+### Bug Fixes
+
+* reset default data dialog ([145fe1e](https://github.com/gaetansenn/dw-ui/commit/145fe1e80bf185f37f8fc26e33d4d6c91a5403fb))
+
 ### [3.8.1](https://github.com/gaetansenn/dw-ui/compare/v3.8.0...v3.8.1) (2022-03-10)
 
 
