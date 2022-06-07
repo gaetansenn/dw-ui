@@ -44,21 +44,27 @@ export default {
   configPath: 'Dialog',
   mixins: [i18n, config],
   data () {
-    return {
-      opened: false,
-      ongoing: {
-        submit: false,
-        cancel: false
-      },
-      title: '',
-      body: '',
-      cancel: this.translate('Dialog.cancel'),
-      submit: this.translate('Dialog.submit'),
-      onClose: null,
-      onSubmit: null
-    }
+    return this.defaultData()
   },
   methods: {
+    defaultData () {
+      return {
+        opened: false,
+        ongoing: {
+          submit: false,
+          cancel: false
+        },
+        title: '',
+        body: '',
+        cancel: this.translate('Dialog.cancel'),
+        submit: this.translate('Dialog.submit'),
+        onClose: null,
+        onSubmit: null
+      }
+    },
+    create (data) {
+      Object.assign(this, this.defaultData(), data)
+    },
     changeOngoing (value, scope = 'submit') {
       this.ongoing[scope] = value
     },
