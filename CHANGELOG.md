@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.9.0](https://github.com/gaetansenn/dw-ui/compare/v3.8.2...v3.9.0) (2022-06-09)
+
+
+### Features
+
+* handle dynamic component for notification ([fc1534f](https://github.com/gaetansenn/dw-ui/commit/fc1534f679f144296905fe3920a13493bb0f91ce))
+
 ### [3.8.2](https://github.com/gaetansenn/dw-ui/compare/v3.8.1...v3.8.2) (2022-06-07)
 
 
