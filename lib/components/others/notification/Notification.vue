@@ -5,12 +5,10 @@
     @mouseout="$emit('resume')"
     @click="to && $emit('close')"
   >
-    <component :is="to ? 'nuxt-link' : 'div'" :to="to" :class="config.fixed">
+    <component :is="is" v-bind="bind" :class="component ? '' : config.fixed">
       <div :class="[config.type.classes, config.type.fixed]" v-html="config.type.icon" />
       <div :class="config.body.fixed">
-        <p v-if="title" :class="config.body.title">
-          {{ title }}
-        </p>
+        <p v-if="title" :class="config.body.title" v-html="title" />
         <!-- eslint-disable-next-line -->
         <p v-if="description" :class="config.body.description" v-html="description" />
       </div>
@@ -42,6 +40,11 @@ export default {
         return ['info', 'success', 'error'].includes(value)
       }
     },
+    /* { name: String, bind: any } */
+    component: {
+      type: Object,
+      default: null
+    },
     title: {
       type: String,
       default: null
@@ -53,6 +56,14 @@ export default {
     to: {
       type: [String, Object],
       default: null
+    }
+  },
+  computed: {
+    bind () {
+      return this.component ? this.component.bind : this.to
+    },
+    is () {
+      return this.component?.name || (this.to ? 'NuxtLink' : 'div')
     }
   }
 }
