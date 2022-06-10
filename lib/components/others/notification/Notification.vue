@@ -60,7 +60,10 @@ export default {
   },
   computed: {
     bind () {
-      return this.component ? this.component.bind : this.to
+      if (this.component) return this.component.bind
+      if (this.to) return { to: this.to }
+
+      return {}
     },
     is () {
       return this.component?.name || (this.to ? 'NuxtLink' : 'div')
