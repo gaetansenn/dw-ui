@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.9.1](https://github.com/gaetansenn/dw-ui/compare/v3.9.0...v3.9.1) (2022-06-10)
+
+
+### Bug Fixes
+
+* **notification:** fix bind value ([0ff78bf](https://github.com/gaetansenn/dw-ui/commit/0ff78bf43c659adbb4706f6f6b41d4ed55e8ec63))
+
 ## [3.9.0](https://github.com/gaetansenn/dw-ui/compare/v3.8.2...v3.9.0) (2022-06-09)
 
 
