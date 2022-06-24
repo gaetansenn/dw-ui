@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.9.2](https://github.com/gaetansenn/dw-ui/compare/v3.9.1...v3.9.2) (2022-06-24)
+
+
+### Bug Fixes
+
+* **button:** add disabled prop declaration for binding ([7e05cc1](https://github.com/gaetansenn/dw-ui/commit/7e05cc1311c5a042fbf8e4593b5e6322a9c251ad))
+
 ### [3.9.1](https://github.com/gaetansenn/dw-ui/compare/v3.9.0...v3.9.1) (2022-06-10)
 
 
