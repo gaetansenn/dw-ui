@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.0](https://github.com/gaetansenn/dw-ui/compare/v3.9.2...v3.10.0) (2022-09-28)
+
+
+### Features
+
+* add native input datetime-local ([d00fd1f](https://github.com/gaetansenn/dw-ui/commit/d00fd1f0dfdb7825d4271354edb73c4f8a94ff9a))
+
 ### [3.9.2](https://github.com/gaetansenn/dw-ui/compare/v3.9.1...v3.9.2) (2022-06-24)
 
 
