@@ -32,6 +32,7 @@
     "@tailwindcss/forms": "^0.4.0",
     "consola": "^2.15.0",
     "defu": "^3.2.2",
+    "nuxt": "^2.15.8",
     "vue-global-events": "^1.2.1"
   },
   "devDependencies": {
