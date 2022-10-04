@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.11.0](https://github.com/gaetansenn/dw-ui/compare/v3.10.0...v3.11.0) (2022-10-04)
+
+
+### Features
+
+* emit focus/blur from inputs ([f116ea7](https://github.com/gaetansenn/dw-ui/commit/f116ea70c5a38c48f7fa3d75258036bb31847222))
+
 ## [3.10.0](https://github.com/gaetansenn/dw-ui/compare/v3.9.2...v3.10.0) (2022-09-28)
 
 
