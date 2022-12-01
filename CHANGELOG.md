@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.11.1](https://github.com/gaetansenn/dw-ui/compare/v3.11.0...v3.11.1) (2022-12-01)
+
+
+### Bug Fixes
+
+* **select:** handle async options updated ([fed05ac](https://github.com/gaetansenn/dw-ui/commit/fed05acd6ba5e4746f242ba2d3524cdfa07c5924))
+
 ## [3.11.0](https://github.com/gaetansenn/dw-ui/compare/v3.10.0...v3.11.0) (2022-10-04)
 
 
