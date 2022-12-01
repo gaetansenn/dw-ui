@@ -56,6 +56,7 @@ export default {
     const selectChildrens = this.localOptions.map((option) => {
       return h('option', {
         domProps: {
+          selected: option[this.valueKey] === this.value,
           value: option[this.valueKey],
           disabled: option.disabled
         }
