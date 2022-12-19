@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.12.0](https://github.com/gaetansenn/dw-ui/compare/v3.11.1...v3.12.0) (2022-12-19)
+
+
+### Features
+
+* upgrade @nuxtjs/tailwindcss ([d4ab617](https://github.com/gaetansenn/dw-ui/commit/d4ab61734df9b765e7715c38d0251e465e38eb4e))
+
 ### [3.11.1](https://github.com/gaetansenn/dw-ui/compare/v3.11.0...v3.11.1) (2022-12-01)
 
 
