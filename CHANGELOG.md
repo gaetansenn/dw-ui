@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/gaetansenn/dw-ui/compare/v3.12.0...v4.0.0) (2022-12-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to tailwind v3
+
+### build
+
+* upgrade to tailwind v3 ([eb6a0da](https://github.com/gaetansenn/dw-ui/commit/eb6a0da39332769ba98e578a75a70b9cc736f50a))
+
 ## [3.12.0](https://github.com/gaetansenn/dw-ui/compare/v3.11.1...v3.12.0) (2022-12-19)
 
 
