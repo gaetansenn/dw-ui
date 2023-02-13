@@ -1,7 +1,15 @@
 <template>
   <label :class="config.fixed">
-    <DwInput :value="value" v-bind="inputProps" type="radio" @change="(value) => $emit('input', value)" />
-    <span v-if="label" :class="[config.label.fixed, config.label.size, config.label.validation]">
+    <DwInput
+      :value="value"
+      v-bind="inputProps"
+      type="radio"
+      @change="value => $emit('input', value)"
+    />
+    <span
+      v-if="label"
+      :class="[config.label.fixed, config.label.size, config.label.validation]"
+    >
       {{ label }}
       <span v-if="required" :class="config.label.star">*</span>
     </span>
@@ -23,6 +31,7 @@ import FormProps from './Form.props'
 export default {
   configPath: 'InputRadio',
   mixins: [i18n, config, localProp('validation')],
+  inheritAttrs: false,
   model: {
     prop: 'selected',
     event: 'input'
@@ -37,10 +46,14 @@ export default {
   computed: {
     inputProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps })
+        ),
         validation: this.localValidation,
         checked: JSON.stringify(this.selected) === JSON.stringify(this.value),
-        configPath: 'InputRadio'
+        configPath: 'InputRadio',
+        ...this.$attrs
       }
     }
   },
@@ -50,7 +63,11 @@ export default {
     },
     onChange () {
       if (Array.isArray(this.selected))
-        if (this.isChecked) this.$emit('input', this.selected.filter(item => item !== this.value))
+        if (this.isChecked)
+          this.$emit(
+            'input',
+            this.selected.filter(item => item !== this.value)
+          )
         else this.$emit('input', [...this.selected, this.value])
       else this.$emit('input', this.isChecked ? null : this.value)
     }

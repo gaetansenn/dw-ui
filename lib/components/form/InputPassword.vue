@@ -4,7 +4,7 @@
       :value="value"
       v-bind="inputProps"
       :type="showPassword ? 'text' : 'password'"
-      @input="(value) => $emit('input', value)"
+      @input="value => $emit('input', value)"
       @trailing-click="onTrailingClick"
       @leading-click="$emit('leading-click')"
       @focus="onFocus"
@@ -49,6 +49,7 @@ export function validate () {
 export default {
   configPath: 'InputPassword',
   mixins: [i18n, config, InputMixin, localProp('validation'), confirmMixin],
+  inheritAttrs: false,
   props: {
     ...InputPasswordProps,
     ...SizeProps,
@@ -66,21 +67,37 @@ export default {
   computed: {
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })
+        ),
         validation: this.localValidation
       }
     },
     inputProps () {
       const inputProps = {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({
+            ...InputProps,
+            ...CommonsProps,
+            ...SizeProps,
+            ...RoundedProps
+          })
+        ),
         validation: this.localValidation,
-        configPath: 'InputPassword'
+        configPath: 'InputPassword',
+        ...this.$attrs
       }
 
       // Inject show password icon
       if (this.eye) {
-        inputProps.trailing = this.config.icon[`${this.showPassword ? 'show' : 'hide'}`]
-        inputProps.iconClasses = [this.config.icon.fixed, 'cursor-pointer'].filter(icon => !!icon).join(' ')
+        inputProps.trailing = this.config.icon[
+          `${this.showPassword ? 'show' : 'hide'}`
+        ]
+        inputProps.iconClasses = [this.config.icon.fixed, 'cursor-pointer']
+          .filter(icon => !!icon)
+          .join(' ')
       }
 
       return inputProps
@@ -101,7 +118,10 @@ export default {
       if (STOP_ON_EMPTY.call(this)) return true
 
       if (this.validatePassword) {
-        const passwordValidate = typeof this.config.validate === 'function' ? this.config.validate.call(this) : validate.call(this)
+        const passwordValidate =
+          typeof this.config.validate === 'function'
+            ? this.config.validate.call(this)
+            : validate.call(this)
 
         if (!passwordValidate) return false
 

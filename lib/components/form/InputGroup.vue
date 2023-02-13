@@ -2,7 +2,11 @@
   <div :class="[config.fixed, config.classes]">
     <slot name="label">
       <div :class="config.label.wrapper">
-        <label v-if="label" :class="[config.label.fixed, config.label.classes, config.label.size]" :for="name">
+        <label
+          v-if="label"
+          :class="[config.label.fixed, config.label.classes, config.label.size]"
+          :for="name"
+        >
           {{ label }}
           <span v-if="required" :class="config.label.star">*</span>
         </label>
@@ -10,10 +14,21 @@
     </slot>
     <div :class="config.wrapper.classes">
       <slot />
-      <p v-if="validation && validation.description" :id="`${name}-error`" :class="[config.wrapper.validation.fixed, config.wrapper.validation.classes]">
+      <p
+        v-if="validation && validation.description"
+        :id="`${name}-error`"
+        :class="[
+          config.wrapper.validation.fixed,
+          config.wrapper.validation.classes
+        ]"
+      >
         {{ validation.description }}
       </p>
-      <p v-else-if="help" :id="`${name}-hint`" :class="[config.wrapper.help.fixed, config.wrapper.help.size]">
+      <p
+        v-else-if="help"
+        :id="`${name}-hint`"
+        :class="[config.wrapper.help.fixed, config.wrapper.help.size]"
+      >
         {{ help }}
       </p>
     </div>
@@ -32,6 +47,7 @@ import FormProps from './Form.props'
 export default {
   configPath: 'InputGroup',
   mixins: [config, localProp('focused')],
+  inheritAttrs: false,
   props: {
     ...SizeProps,
     ...CommonsProps,

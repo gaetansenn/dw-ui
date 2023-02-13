@@ -4,9 +4,15 @@
       ref="input"
       :value="value"
       v-bind="inputProps"
-      :class="[config.fixed, config.Input.validation, config.Input.size, config.Input.rounded, config.remaining.input]"
+      :class="[
+        config.fixed,
+        config.Input.validation,
+        config.Input.size,
+        config.Input.rounded,
+        config.remaining.input
+      ]"
       :maxlength="maxlength"
-      @input="(event) => $emit('input', event.target.value)"
+      @input="event => $emit('input', event.target.value)"
       @focus="onFocus"
       @blur="onBlur"
     />
@@ -33,6 +39,7 @@ import FormProps from './Form.props'
 export default {
   configPath: 'TextArea',
   mixins: [i18n, config, InputMixin, localProp('validation')],
+  inheritAttrs: false,
   props: {
     value: {
       type: String,
@@ -59,15 +66,28 @@ export default {
     },
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })
+        ),
         validation: this.localValidation
       }
     },
     inputProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps, ...TextAreaProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({
+            ...InputProps,
+            ...CommonsProps,
+            ...SizeProps,
+            ...RoundedProps,
+            ...TextAreaProps
+          })
+        ),
         validation: this.localValidation,
-        configPath: 'InputText'
+        configPath: 'InputText',
+        ...this.$attrs
       }
     }
   }

@@ -1,6 +1,15 @@
 <template>
-  <label :class="[config.wrapper.fixed, config.wrapper.classes, config.wrapper.size]" tabindex="0">
-    <input type="checkbox" :class="config.input" :checked="checked" @click="toggle">
+  <label
+    :class="[config.wrapper.fixed, config.wrapper.classes, config.wrapper.size]"
+    tabindex="0"
+  >
+    <input
+      type="checkbox"
+      v-bind="$attrs"
+      :class="config.input"
+      :checked="checked"
+      @click="toggle"
+    >
     <div :class="config.toggle.wrapper">
       <div :class="[config.toggle.fixed, config.toggle.classes]" />
     </div>
@@ -14,14 +23,15 @@ import SizeProps from '../size.props'
 export default {
   configPath: 'Toggle',
   mixins: [config],
+  inheritAttrs: false,
   model: {
     prop: 'selected',
     event: 'input'
   },
   props: {
     /**
-    * v-model binding of checked element
-    */
+     * v-model binding of checked element
+     */
     selected: {
       type: [Boolean, String],
       default: null

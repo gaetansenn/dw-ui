@@ -19,7 +19,14 @@ export default {
   components: {
     DwInputGroup
   },
-  mixins: [i18n, config, InputMixin, localProp('validation'), localProp('value')],
+  mixins: [
+    i18n,
+    config,
+    InputMixin,
+    localProp('validation'),
+    localProp('value')
+  ],
+  inheritAttrs: false,
   props: {
     ...SelectProps,
     ...SizeProps,
@@ -33,7 +40,8 @@ export default {
   computed: {
     localOptions () {
       return this.options.map((item) => {
-        if (typeof item === 'string' || typeof item === 'number') return { [this.valueKey]: item, [this.labelKey]: item }
+        if (typeof item === 'string' || typeof item === 'number')
+          return { [this.valueKey]: item, [this.labelKey]: item }
         return item
       })
     }
@@ -47,52 +55,100 @@ export default {
     },
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })
+        ),
         validation: this.localValidation
       }
     }
   },
   render (h) {
     const selectChildrens = this.localOptions.map((option) => {
-      return h('option', {
-        domProps: {
-          selected: option[this.valueKey] === this.value,
-          value: option[this.valueKey],
-          disabled: option.disabled
-        }
-      }, option[this.labelKey])
+      return h(
+        'option',
+        {
+          domProps: {
+            selected: option[this.valueKey] === this.value,
+            value: option[this.valueKey],
+            disabled: option.disabled
+          }
+        },
+        option[this.labelKey]
+      )
     })
 
-    if (this.placeholder !== false) selectChildrens.unshift(h('option', {
-      domProps: {
-        value: null
-      }
-    }, this.placeholder || this.config.placeholder))
+    if (this.placeholder !== false)
+      selectChildrens.unshift(
+        h(
+          'option',
+          {
+            domProps: {
+              value: null
+            }
+          },
+          this.placeholder || this.config.placeholder
+        )
+      )
 
-    const select = h('select', {
-      domProps: {
-        value: this.value,
-        disabled: this.disabled
+    const select = h(
+      'select',
+      {
+        domProps: {
+          value: this.value,
+          disabled: this.disabled
+        },
+        attrs: this.$attrs,
+        on: {
+          input: (event) => {
+            this.$emit('change', event.target.value)
+            this.$emit('input', event.target.value)
+          }
+        },
+        class: [
+          this.config.fixed,
+          this.config.size,
+          this.config.variant,
+          this.config.rounded,
+          this.config.validation
+        ]
       },
-      on: {
-        input: (event) => {
-          this.$emit('change', event.target.value)
-          this.$emit('input', event.target.value)
-        }
-      },
-      class: [this.config.fixed, this.config.size, this.config.variant, this.config.rounded, this.config.validation]
-    }, selectChildrens)
+      selectChildrens
+    )
 
-    return h('DwInputGroup', {
-      attrs: this.inputGroupProps()
-    }, [h('div', {
-      class: this.config.wrapper
-    }, [select, h('span', {
-      class: [this.config.icon.fixed, this.config.icon.size, this.config.icon.classes],
-      domProps: {
-        innerHTML: !this.$slots.arrow ? this.config.icon.icon : undefined
-      }
-    }, this.$slots.arrow ? this.$slots.arrow : [])])])
+    return h(
+      'DwInputGroup',
+      {
+        attrs: this.inputGroupProps()
+      },
+      [
+        h(
+          'div',
+          {
+            class: this.config.wrapper
+          },
+          [
+            select,
+            h(
+              'span',
+              {
+                class: [
+                  this.config.icon.fixed,
+                  this.config.icon.size,
+                  this.config.icon.classes
+                ],
+                domProps: {
+                  innerHTML: !this.$slots.arrow
+                    ? this.config.icon.icon
+                    : undefined
+                }
+              },
+              this.$slots.arrow ? this.$slots.arrow : []
+            )
+          ]
+        )
+      ]
+    )
   }
 }
 </script>

@@ -1,4 +1,3 @@
-
 <script>
 import config from '../config.mixin'
 import CommonsProps from '../commons.props'
@@ -15,6 +14,7 @@ export default {
     DwTooltip
   },
   mixins: [config],
+  inheritAttrs: false,
   props: {
     value: {
       type: [String, Number, Object, Boolean, Date],
@@ -57,6 +57,7 @@ export default {
   },
   render (h) {
     const attrs = {
+      ...this.$attrs,
       type: this.type,
       ...this.bind,
       id: this.name,
@@ -66,34 +67,43 @@ export default {
 
     if (this.$parent.help) attrs.describedby = `${this.name}-hint`
 
-    const childrens = [h('input', {
-      ref: 'component',
-      class: [this.config.Input.fixed, this.config.Input.classes, this.config.Input.variant, this.config.Input.size, this.config.Input.validation, this.config.Input.rounded],
-      attrs,
-      domProps: {
-        value: this.value,
-        checked: this.checked
-      },
-      on: {
-        blur: () => {
-          this.focused = false
-          this.$emit('blur')
+    const childrens = [
+      h('input', {
+        ref: 'component',
+        class: [
+          this.config.Input.fixed,
+          this.config.Input.classes,
+          this.config.Input.variant,
+          this.config.Input.size,
+          this.config.Input.validation,
+          this.config.Input.rounded
+        ],
+        attrs,
+        domProps: {
+          value: this.value,
+          checked: this.checked
         },
-        focus: () => {
-          this.focused = true
-          this.$emit('focus')
-        },
-        input: ($event) => {
-          this.$emit('input', $event.target.value)
-        },
-        change: () => {
-          this.$emit('change', this.value)
-        },
-        click: () => {
-          this.$emit('click')
+        on: {
+          blur: () => {
+            this.focused = false
+            this.$emit('blur')
+          },
+          focus: () => {
+            this.focused = true
+            this.$emit('focus')
+          },
+          input: ($event) => {
+            this.$emit('input', $event.target.value)
+          },
+          change: () => {
+            this.$emit('change', this.value)
+          },
+          click: () => {
+            this.$emit('click')
+          }
         }
-      }
-    })]
+      })
+    ]
 
     if (this.trailing || this.helpTooltip) {
       const icon = h('div', {
@@ -104,7 +114,10 @@ export default {
       })
 
       const trailingWrapper = {
-        class: [this.config.Input.icon.trailing.fixed, this.config.Input.icon.trailing.classes],
+        class: [
+          this.config.Input.icon.trailing.fixed,
+          this.config.Input.icon.trailing.classes
+        ],
         on: {
           click: () => {
             this.$emit('trailing-click')
@@ -113,14 +126,21 @@ export default {
       }
 
       if (this.helpTooltip)
-        childrens.push(h('div', trailingWrapper, [h('DwTooltip', {
-          props: {
-            position: 'bottomRight',
-            content: this.helpTooltip
-          }
-        }, [icon])]))
-      else
-        childrens.push(h('div', trailingWrapper, [icon]))
+        childrens.push(
+          h('div', trailingWrapper, [
+            h(
+              'DwTooltip',
+              {
+                props: {
+                  position: 'bottomRight',
+                  content: this.helpTooltip
+                }
+              },
+              [icon]
+            )
+          ])
+        )
+      else childrens.push(h('div', trailingWrapper, [icon]))
     }
 
     if (this.leading) {
@@ -132,7 +152,10 @@ export default {
       })
 
       const leadingWrapper = {
-        class: [this.config.Input.icon.leading.fixed, this.config.Input.icon.leading.classes],
+        class: [
+          this.config.Input.icon.leading.fixed,
+          this.config.Input.icon.leading.classes
+        ],
         on: {
           click: () => {
             this.$emit('leading-click')
@@ -143,9 +166,13 @@ export default {
       childrens.push(h('div', leadingWrapper, [icon]))
     }
 
-    return h('div', {
-      class: this.config.Input.wrapper
-    }, childrens)
+    return h(
+      'div',
+      {
+        class: this.config.Input.wrapper
+      },
+      childrens
+    )
   }
 }
 </script>

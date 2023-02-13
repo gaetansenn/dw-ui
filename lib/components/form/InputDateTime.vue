@@ -4,7 +4,7 @@
       :value="value"
       v-bind="inputProps"
       type="datetime-local"
-      @input="(value) => $emit('input', value)"
+      @input="value => $emit('input', value)"
       @leading-click="$emit('leading-click')"
       @trailing-click="$emit('trailing-click')"
       @focus="onFocus"
@@ -27,6 +27,7 @@ import FormProps from './Form.props'
 
 export default {
   mixins: [i18n, InputMixin, localProp('validation')],
+  inheritAttrs: false,
   props: {
     value: {
       type: String,
@@ -42,15 +43,27 @@ export default {
   computed: {
     inputGroupProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({ ...InputGroupProps, ...CommonsProps, ...SizeProps })
+        ),
         validation: this.localValidation
       }
     },
     inputProps () {
       return {
-        ...syncProps.call(this, Object.keys({ ...InputProps, ...CommonsProps, ...SizeProps, ...RoundedProps })),
+        ...syncProps.call(
+          this,
+          Object.keys({
+            ...InputProps,
+            ...CommonsProps,
+            ...SizeProps,
+            ...RoundedProps
+          })
+        ),
         validation: this.localValidation,
-        configPath: 'InputDateTime'
+        configPath: 'InputDateTime',
+        ...this.$attrs
       }
     }
   }
