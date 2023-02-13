@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/gaetansenn/dw-ui/compare/v4.0.0...v4.0.1) (2023-02-13)
+
+
+### Bug Fixes
+
+* apply attr herit to native html element ([d94653e](https://github.com/gaetansenn/dw-ui/commit/d94653e59802182cf384a8e4209f749e6d30d23f))
+
 ## [4.0.0](https://github.com/gaetansenn/dw-ui/compare/v3.12.0...v4.0.0) (2022-12-20)
 
 
