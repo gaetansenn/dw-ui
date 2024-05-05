@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/gaetansenn/dw-ui/compare/v4.1.0...v4.2.0) (2024-05-05)
+
+
+### Features
+
+* inject target attribute for link case ([1d61e2b](https://github.com/gaetansenn/dw-ui/commit/1d61e2ba97fec53de4463417832f1da6eb18df88))
+
 ## [4.1.0](https://github.com/gaetansenn/dw-ui/compare/v4.0.1...v4.1.0) (2023-11-27)
 
 
