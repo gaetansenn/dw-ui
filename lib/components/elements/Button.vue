@@ -45,7 +45,8 @@ export default {
           }
         case 'nuxt-link': {
           return {
-            to: this.to
+            to: this.to,
+            target: this.target
           }
         }
         default: {
