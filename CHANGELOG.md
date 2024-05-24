@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.1](https://github.com/gaetansenn/dw-ui/compare/v4.2.0...v4.2.1) (2024-05-24)
+
+
+### Bug Fixes
+
+* fix reactivity for notifications values plugin ([66ec54b](https://github.com/gaetansenn/dw-ui/commit/66ec54b77bcd0dbae8570794fdd647b1c514b34c))
+
 ## [4.2.0](https://github.com/gaetansenn/dw-ui/compare/v4.1.0...v4.2.0) (2024-05-05)
 
 
