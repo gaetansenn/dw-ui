@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.4](https://github.com/gaetansenn/dw-ui/compare/v4.2.3...v4.2.4) (2025-07-08)
+
+
+### Bug Fixes
+
+* **Select:** Fix selected option display after DOM manipulation ([4f8e3a1](https://github.com/gaetansenn/dw-ui/commit/4f8e3a164b9fdacdbd215d509af236b297f50777))
+
 ### [4.2.3](https://github.com/gaetansenn/dw-ui/compare/v4.2.2...v4.2.3) (2025-05-12)
 
 ### [4.2.2](https://github.com/gaetansenn/dw-ui/compare/v4.2.1...v4.2.2) (2025-05-12)
