@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/gaetansenn/dw-ui/compare/v4.2.4...v4.3.0) (2025-08-04)
+
+
+### Features
+
+* **select:** handle case where value is an object vs primitive ([3d8ce54](https://github.com/gaetansenn/dw-ui/commit/3d8ce548c275740b1b058bcf67f75cbcb83ff696))
+
 ### [4.2.4](https://github.com/gaetansenn/dw-ui/compare/v4.2.3...v4.2.4) (2025-07-08)
 
 
