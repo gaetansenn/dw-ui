@@ -65,7 +65,9 @@ export default {
   },
   render (h) {
     const selectChildrens = this.localOptions.map((option) => {
-      const isSelected = option[this.valueKey] === this.value
+      const isSelected = typeof this.value === 'object' && this.value && this.valueKey
+        ? option[this.valueKey] === this.value[this.valueKey]
+        : option[this.valueKey] === this.value
 
       return h(
         'option',
