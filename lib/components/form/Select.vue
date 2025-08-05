@@ -102,7 +102,9 @@ export default {
       'select',
       {
         domProps: {
-          value: this.value,
+          value: typeof this.value === 'object' && this.value && this.valueKey
+            ? this.value[this.valueKey]
+            : this.value,
           disabled: this.disabled
         },
         attrs: this.$attrs,
