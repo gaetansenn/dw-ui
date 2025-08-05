@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.3.1](https://github.com/gaetansenn/dw-ui/compare/v4.3.0...v4.3.1) (2025-08-05)
+
+
+### Bug Fixes
+
+* fix default dom value of select when object type ([2e84458](https://github.com/gaetansenn/dw-ui/commit/2e844583a6e3c7a13ef59b1d3308690c36225ace))
+
 ## [4.3.0](https://github.com/gaetansenn/dw-ui/compare/v4.2.4...v4.3.0) (2025-08-04)
 
 
